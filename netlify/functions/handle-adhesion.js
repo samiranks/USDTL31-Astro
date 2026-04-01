@@ -1,6 +1,6 @@
-import { Octokit } from "@octokit/rest";
+const { Octokit } = require("@octokit/rest");
 
-export const handler = async (event) => {
+exports.handler = async (event) => {
   const headers = {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Headers": "Content-Type",
@@ -35,15 +35,15 @@ export const handler = async (event) => {
     // Verification du token GitHub
     const token = process.env.GITHUB_TOKEN;
     if (!token) {
-      console.error("❌ GITHUB_TOKEN manquant dans les variables d'environnement Netlify.");
+      console.error("GITHUB_TOKEN manquant !");
       return {
         statusCode: 500,
         headers,
-        body: JSON.stringify({ error: "Configuration serveur manquante." }),
+        body: JSON.stringify({ error: "Configuration serveur manquante (token absent)." }),
       };
     }
 
-    // Nom de fichier unique avec horodatage
+    // Nom de fichier unique
     const date = new Date().toISOString();
     const slug = `${date.split("T")[0]}-${nom.toLowerCase().replace(/\s+/g, "-")}-${prenom.toLowerCase().replace(/\s+/g, "-")}`;
     const filePath = `src/content/adhesions/${slug}.json`;
@@ -54,10 +54,8 @@ export const handler = async (event) => {
       2
     );
 
-    // Initialiser Octokit avec le token GitHub
     const octokit = new Octokit({ auth: token });
 
-    // Creer le fichier JSON dans le repo GitHub
     await octokit.repos.createOrUpdateFileContents({
       owner: "samiranks",
       repo: "USDTL31-Astro",
@@ -67,7 +65,7 @@ export const handler = async (event) => {
       branch: "main",
     });
 
-    console.log(`✅ Adhesion enregistree : ${filePath}`);
+    console.log("Adhesion enregistree :", filePath);
 
     return {
       statusCode: 200,
@@ -75,11 +73,11 @@ export const handler = async (event) => {
       body: JSON.stringify({ success: true }),
     };
   } catch (error) {
-    console.error("❌ Erreur handle-adhesion:", error.message);
+    console.error("Erreur handle-adhesion:", error.message);
     return {
       statusCode: 500,
       headers,
-      body: JSON.stringify({ error: error.message || "Erreur serveur interne." }),
+      body: JSON.stringify({ error: error.message }),
     };
   }
 };

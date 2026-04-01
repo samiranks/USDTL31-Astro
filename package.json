@@ -12,7 +12,7 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@octokit/rest": "^22.0.1",
+    "@octokit/rest": "^20.1.2",
     "@tailwindcss/vite": "^4.2.2",
     "astro": "^6.1.2",
     "tailwindcss": "^4.2.2"

@@ -3,6 +3,7 @@ backend:
   repo: samiranks/USDTL31-Astro
   branch: main
   base_url: https://sveltia-cms-auth.pages.dev
+  site_domain: usdtl31-astro.pages.dev
 
 local_backend: true
 display_url: https://usdtl31.pages.dev

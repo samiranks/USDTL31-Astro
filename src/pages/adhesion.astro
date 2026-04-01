@@ -109,7 +109,7 @@ import Layout from '../layouts/Layout.astro';
 								</div>
 								<div>
 									<label class="block font-headline font-bold text-[10px] uppercase tracking-widest text-on-surface-variant mb-2">Fonction / Poste</label>
-									<input type="text" name="poste" class="w-full bg-surface-container-low border-none border-b-2 border-outline/30 focus:border-primary focus:ring-0 font-body py-4 px-4 transition-all" placeholder="Ex: Chauffeur-Livreur">
+									<input type="text" name="fonction" class="w-full bg-surface-container-low border-none border-b-2 border-outline/30 focus:border-primary focus:ring-0 font-body py-4 px-4 transition-all" placeholder="Ex: Chauffeur-Livreur">
 								</div>
                                 <div>
 									<label class="block font-headline font-bold text-[10px] uppercase tracking-widest text-on-surface-variant mb-2">Type de contrat</label>
@@ -154,8 +154,9 @@ import Layout from '../layouts/Layout.astro';
                                             </p>
                                         </div>
 
-                                        <input type="hidden" name="montant_cotisation" value="137" />
-                                        <input type="hidden" name="type_cotisation" value="annuelle" />
+                                        <input type="hidden" name="cotisation" value="137" />
+                                        <input type="hidden" name="frequence" value="annuelle" />
+                                        <input type="hidden" name="temps" value="Temps plein" />
                                     </div>
                                     <span class="material-symbols-outlined absolute -top-4 -right-4 text-9xl opacity-5 text-primary pointer-events-none">receipt_long</span>
                                 </div>

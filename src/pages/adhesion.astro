@@ -260,10 +260,31 @@ import Layout from '../layouts/Layout.astro';
         const membershipForm = document.getElementById('membership-form');
         const submitBtn = document.getElementById('submit-btn');
 
-        membershipForm.addEventListener('submit', () => {
+        // Submission Logic with AJAX for Netlify
+        membershipForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const formData = new FormData(membershipForm);
+            
             submitBtn.disabled = true;
             submitBtn.classList.add('opacity-50', 'cursor-not-allowed');
             submitBtn.innerHTML = 'Envoi en cours...';
+
+            fetch("/", {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: new URLSearchParams(formData).toString(),
+            })
+            .then(() => {
+                window.location.href = "/merci/";
+            })
+            .catch((error) => {
+                console.error('Netlify Error:', error);
+                alert("Une erreur est survenue lors de l'envoi. Veuillez réessayer.");
+                submitBtn.disabled = false;
+                submitBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                submitBtn.innerHTML = 'Réessayer la finalisation';
+            });
         });
     </script>
 </Layout>

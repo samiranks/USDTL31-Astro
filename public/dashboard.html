@@ -390,14 +390,20 @@
                 Dashboard
             </a>
 
-            <div class="nav-section-label">Données</div>
+            <div class="nav-section-label">Adhésions</div>
+            <a href="https://app.netlify.com/sites/usdtl31/forms" target="_blank" class="nav-link">
+                <span class="material-symbols-outlined">inbox</span>
+                Soumissions Netlify
+            </a>
             <a href="/admin/#/collections/adhesions" class="nav-link">
                 <span class="material-symbols-outlined">group</span>
-                Adhérents
+                Adhérents (CMS)
             </a>
+
+            <div class="nav-section-label">Contenu</div>
             <a href="/admin/" class="nav-link">
                 <span class="material-symbols-outlined">edit_note</span>
-                Contenu CMS
+                Éditeur CMS
             </a>
 
             <div class="nav-section-label">Site</div>
@@ -441,11 +447,11 @@
         <div class="kpi-grid">
             <div class="kpi-card red">
                 <div class="kpi-label">Nouvelles adhésions</div>
-                <div class="kpi-value">--</div>
-                <div class="kpi-sub muted">
-                    <span class="material-symbols-outlined" style="font-size:14px!important">info</span>
-                    Vérifier dans le CMS
-                </div>
+                <div class="kpi-value" id="adhesion-count">--</div>
+                <a href="https://app.netlify.com/sites/usdtl31/forms" target="_blank" class="kpi-sub muted" style="text-decoration:none;">
+                    <span class="material-symbols-outlined" style="font-size:14px!important">open_in_new</span>
+                    Voir dans Netlify Forms
+                </a>
                 <span class="material-symbols-outlined kpi-icon" style="font-variation-settings:'FILL' 1;">person_add</span>
             </div>
             <div class="kpi-card blue">
@@ -469,17 +475,30 @@
         </div>
 
         <!-- Action Cards -->
-        <div class="action-grid">
-            <!-- Adhérents -->
+        <div class="action-grid" style="grid-template-columns: repeat(3, 1fr);">
+            <!-- Suivi Soumissions Netlify -->
+            <div class="action-card" style="border-top: 3px solid var(--primary);">
+                <div>
+                    <div class="icon-wrap"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">inbox</span></div>
+                    <h3>Soumissions Netlify</h3>
+                    <p>Toutes les demandes d'adhésion reçues sont stockées ici en temps réel, même sans déploiement. <strong>C'est votre source de vérité principale.</strong></p>
+                </div>
+                <a href="https://app.netlify.com/sites/usdtl31/forms" target="_blank" class="action-btn" style="background:#e65c00;">
+                    <span class="material-symbols-outlined" style="font-size:16px!important">open_in_new</span>
+                    Voir les demandes reçues
+                </a>
+            </div>
+
+            <!-- Adhérents CMS -->
             <div class="action-card">
                 <div>
                     <div class="icon-wrap"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">group</span></div>
-                    <h3>Gestion des Adhérents</h3>
-                    <p>Accédez à la liste complète des adhésions reçues. Consultez les informations de contact, les données de cotisation et le secteur d'activité de chaque membre.</p>
+                    <h3>Adhérents (CMS)</h3>
+                    <p>Liste des adhésions converties en fiches CMS par la fonction automatique. Disponible après traitement du formulaire par Netlify.</p>
                 </div>
                 <a href="/admin/#/collections/adhesions" class="action-btn">
                     <span class="material-symbols-outlined" style="font-size:16px!important">open_in_new</span>
-                    Ouvrir la liste des adhérents
+                    Ouvrir la liste
                 </a>
             </div>
 
@@ -488,11 +507,11 @@
                 <div>
                     <div class="icon-wrap"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">edit_document</span></div>
                     <h3>Édition du Contenu</h3>
-                    <p>Modifiez les textes, actualités et documents officiels du site de l'UDTL 31 via l'interface d'administration simplifiée.</p>
+                    <p>Modifiez les textes, actualités et documents officiels du site de l'UDTL 31 via l'interface d'administration.</p>
                 </div>
                 <a href="/admin/" class="action-btn">
                     <span class="material-symbols-outlined" style="font-size:16px!important">arrow_forward</span>
-                    Accéder au CMS complet
+                    Accéder au CMS
                 </a>
                 <span class="material-symbols-outlined deco" style="font-variation-settings:'FILL' 1;">edit_document</span>
             </div>

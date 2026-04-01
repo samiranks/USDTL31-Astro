@@ -2,14 +2,23 @@
   command = "npm run build"
   publish = "dist"
 
+[functions]
+  directory = "netlify/functions"
+
 [[headers]]
   for = "/*"
   [headers.values]
     X-Frame-Options = "DENY"
     X-XSS-Protection = "1; mode=block"
 
+# Redirection page de confirmation après adhésion
 [[redirects]]
-  from = "/*"
-  to = "/index.html"
+  from = "/merci"
+  to = "/merci/"
+  status = 301
+
+# SPA fallback uniquement pour les vraies pages Astro (pas les forms Netlify)
+[[redirects]]
+  from = "/admin/*"
+  to = "/admin/index.html"
   status = 200
-  condition = {Role = ["admin"]}

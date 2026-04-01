@@ -9,6 +9,8 @@ collections:
   - name: "activites"
     label: "Activités & Actualités"
     folder: "src/content/activites"
+    extension: "md"
+    format: "frontmatter"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:

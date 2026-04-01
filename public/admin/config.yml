@@ -16,7 +16,7 @@ collections:
     fields:
       - {label: "Titre", name: "title", widget: "string"}
       - {label: "Date de publication", name: "date", widget: "datetime"}
-      - {label: "Catégorie", name: "category", widget: "select", options: ["Secteur Aéronautique", "Transports", "Santé & Service Public", "Commerce", "BTP", "Actualité Générale"]}
+      - {label: "Catégorie", name: "category", widget: "select", options: ["Négociations", "Juridique", "Grèves & Mouvements", "Actualité Générale"]}
       - {label: "Image de couverture", name: "image", widget: "image", required: false}
       - {label: "Résumé", name: "summary", widget: "text"}
       - {label: "Corps de l'article", name: "body", widget: "markdown"}

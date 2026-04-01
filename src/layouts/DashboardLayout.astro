@@ -1,0 +1,44 @@
+---
+import '../styles/global.css';
+
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="fr" class="light">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<title>{title}</title>
+		
+		<!-- Google Fonts & Icons -->
+		<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;700;800;900&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+		<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+        <style is:global>
+            /* Custom styling strictly for dashboard bar chart */
+            .bar-red-1 { height: 40%; }
+            .bar-gray-1 { height: 20%; }
+            .bar-red-2 { height: 60%; }
+            .bar-gray-2 { height: 25%; }
+            .bar-red-3 { height: 90%; }
+            .bar-gray-3 { height: 10%; }
+            .bar-red-4 { height: 35%; }
+            .bar-gray-4 { height: 20%; }
+            .bar-red-5 { height: 100%; }
+            .bar-gray-5 { height: 0%; }
+            .bar-red-6 { height: 65%; }
+            .bar-gray-6 { height: 30%; }
+            .bar-red-7 { height: 50%; }
+            .bar-gray-7 { height: 20%; }
+        </style>
+	</head>
+	<body class="bg-background text-on-background flex min-h-screen">
+		<!-- Main Content Slot -->
+		<slot />
+	</body>
+</html>

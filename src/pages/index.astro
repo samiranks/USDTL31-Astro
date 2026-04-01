@@ -1,0 +1,145 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Accueil - UDTL 31">
+	<main class="pt-24">
+		<!-- Hero Section: Bastion Occitan -->
+		<section class="relative h-[870px] flex items-end overflow-hidden">
+			<div class="absolute inset-0 z-0">
+				<img class="w-full h-full object-cover" data-alt="Panoramic view of Toulouse skyline at dusk with the Garonne river and historic brick architecture under a dramatic red and violet sky" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxDwZcXA2-OTFKm10hZ9cynpAepbjDnJr4AOsO0mRWV9be91paLIzfiGMXua5l-bkF1nIWaYUw4MBnszjdIuH6oJ0klp-KZY1QzEGanFvxD5_JPZE2AuAOWfTzLCveoAtBUz1-1zlnuOTUvJqDYcN33_-pBufbJmP9CeH5mj1y8Abb9PzyK6EorC-p_zljJPakk1NXWOhERE6GtQBiIM-BcSQisD0hZlUBe5ouCtsBgCHeiFT9fYTs1ltAZYCiIOQTSS5J9lqhgf0"/>
+				<div class="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent"></div>
+			</div>
+			<div class="relative z-10 max-w-7xl mx-auto px-8 pb-20 w-full">
+				<div class="max-w-3xl">
+					<div class="flex items-center gap-2 mb-6">
+						<span class="bg-tertiary-container text-on-tertiary-container px-3 py-1 text-xs font-bold tracking-widest uppercase rounded-sm">31 - Haute-Garonne</span>
+						<div class="h-px w-12 bg-tertiary-fixed-dim"></div>
+					</div>
+					<h1 class="text-7xl md:text-8xl font-black font-headline tracking-tighter leading-[0.9] text-on-background mb-8">
+						LE BASTION <br/> <span class="text-primary">OCCITAN</span>
+					</h1>
+					<p class="text-xl font-body text-on-surface-variant max-w-xl mb-10 leading-relaxed">
+						L'UDTL 31 défend les droits des travailleurs du transport et de la logistique en Midi-Pyrénées. Force, indépendance et solidarité régionale.
+					</p>
+					<div class="flex gap-4">
+						<a href="/activites" class="signature-gradient text-on-primary px-8 py-4 rounded-sm font-headline font-extrabold text-lg flex items-center gap-3 hover:opacity-90 transition-all">
+							DÉCOUVRIR NOS ACTIONS
+							<span class="material-symbols-outlined">arrow_forward</span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Bento Grid: News & Services -->
+		<section class="max-w-7xl mx-auto px-8 py-24">
+			<div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+				<!-- Large Card: Main News -->
+				<div class="md:col-span-8 bg-surface-container-low p-10 flex flex-col justify-between relative overflow-hidden">
+					<div class="relative z-10">
+						<span class="text-primary font-headline font-bold uppercase tracking-widest text-sm block mb-4">Actualités Récentes</span>
+						<h2 class="text-4xl font-black font-headline tracking-tight max-w-xl mb-6">Négociations Annuelles Obligatoires : L'UDTL 31 maintient la pression</h2>
+						<p class="text-on-surface-variant font-body text-lg leading-relaxed max-w-lg">Face à l'inflation, nous exigeons une revalorisation immédiate des grilles salariales pour tous les chauffeurs et logisticiens de la région.</p>
+					</div>
+					<div class="mt-12 relative z-10">
+						<a class="inline-flex items-center gap-2 font-headline font-bold text-primary hover:gap-4 transition-all" href="/activites">
+							LIRE LA SUITE <span class="material-symbols-outlined">trending_flat</span>
+						</a>
+					</div>
+					<div class="absolute top-0 right-0 w-1/3 h-full opacity-10 pointer-events-none">
+						<span class="text-[20rem] font-black font-headline text-primary select-none leading-none -mr-20">31</span>
+					</div>
+				</div>
+				<!-- Small Card: Quick Link -->
+				<div class="md:col-span-4 bg-primary text-on-primary p-8 flex flex-col justify-between">
+					<span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">gavel</span>
+					<div>
+						<h3 class="text-2xl font-black font-headline mb-4">Permanence Juridique</h3>
+						<p class="font-body opacity-90 mb-6">Besoin d'un conseil ? Nos experts vous reçoivent chaque mardi au siège départemental.</p>
+						<button class="w-full bg-on-primary text-primary font-headline font-bold py-3 rounded-sm hover:bg-surface-container-highest transition-colors">PRENDRE RDV</button>
+					</div>
+				</div>
+				<!-- Secondary Row -->
+				<div class="md:col-span-4 bg-surface-container-highest p-8">
+					<h3 class="text-xl font-black font-headline mb-4">Transport Routier</h3>
+					<div class="space-y-4">
+						<div class="flex items-center justify-between group cursor-pointer">
+							<span class="font-body font-medium">Conventions Collectives</span>
+							<span class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform">chevron_right</span>
+						</div>
+						<div class="h-px bg-outline-variant/20"></div>
+						<div class="flex items-center justify-between group cursor-pointer">
+							<span class="font-body font-medium">Temps de repos</span>
+							<span class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform">chevron_right</span>
+						</div>
+						<div class="h-px bg-outline-variant/20"></div>
+						<div class="flex items-center justify-between group cursor-pointer">
+							<span class="font-body font-medium">Sécurité au travail</span>
+							<span class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform">chevron_right</span>
+						</div>
+					</div>
+				</div>
+				<div class="md:col-span-4 bg-surface-container-low p-8 relative">
+					<img class="absolute inset-0 w-full h-full object-cover opacity-20 grayscale" data-alt="A macro shot of a truck tire tread on wet asphalt, emphasizing the grit and industrial nature of transport logistics" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnXPdXBRS9Iyg6tO586IZoUz57qtL_ZzkPI6xQEqzeGsW6KXyle5eKG9NhkE91WPvT3l4EeHOugC9_Iq2LxLW9XLfQW2UUpCc7bXeVg3ulcC-AjoE45TzlbraxflrwOfA7gEfdssq6Opt_RhyX_od94SS59E1rmja3qiqFOio-3WZ1xTGdb_JRefqeVx4JjC70wmSAIqk4MkdeITDiVwUIVQpsUjBPv0tTOEAwwHoBkNY7aQK4b2_PQMIzyjsGNTh82Kt1XhjV9c4"/>
+					<div class="relative z-10">
+						<h3 class="text-xl font-black font-headline mb-4">Logistique & Entrepôts</h3>
+						<p class="font-body text-sm text-on-surface-variant mb-6">Focus sur les plateformes de la zone logistique d'Eurocentre.</p>
+						<a class="text-tertiary font-bold font-headline underline underline-offset-4" href="/transport-logistique">CONSULTER LE DOSSIER</a>
+					</div>
+				</div>
+				<div class="md:col-span-4 signature-gradient text-on-primary p-8 flex items-center justify-center text-center">
+					<div>
+						<div class="text-5xl font-black font-headline mb-2">1500+</div>
+						<div class="font-body text-sm uppercase tracking-widest opacity-80">Militants en Haute-Garonne</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Editorial Section: Regional Focus -->
+		<section class="bg-surface-container-low py-24">
+			<div class="max-w-7xl mx-auto px-8 flex flex-col md:flex-row gap-16 items-center">
+				<div class="w-full md:w-1/2">
+					<div class="aspect-[4/5] relative overflow-hidden">
+						<img class="w-full h-full object-cover grayscale" data-alt="Black and white portrait of a weathered worker in high-visibility gear looking out over an industrial transport hub at dawn" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtLtvwOkcBNnCVXAqLaUYPSzGdM-hK03EnbG9VOuXforKbdd8jwcdzHCr9hUf4den4wa-GD-HNfyrXvz0WVfrHn6_XgOhK89lohdgowXorm_5V1UmPYrs0vxFeoACYCM0Gie2aYTUNtiXWiWD_mn0fNnYvgDcjbbWKRvIEjKpTEM7PsgA79_U2mNfc0jDy0TSe8HHn-7tKALTJm6YizCY3VVc1QUfmCMJiwr3cKEGhukwBGdD3Dd-mt7gJa6BHo5UL3Y1cVzxJ5AU"/>
+						<div class="absolute -bottom-6 -right-6 w-48 h-48 signature-gradient p-6 flex items-center justify-center">
+							<span class="text-on-primary font-headline font-black text-center leading-tight">SOLIDARITÉ<br/>OUVRIÈRE</span>
+						</div>
+					</div>
+				</div>
+				<div class="w-full md:w-1/2">
+					<span class="text-tertiary font-headline font-bold text-sm tracking-[0.2em] uppercase mb-4 block">Notre engagement</span>
+					<h2 class="text-5xl font-black font-headline tracking-tighter mb-8 leading-none">Indépendance syndicale : <br/><span class="text-primary">Notre force.</span></h2>
+					<div class="space-y-6 text-on-surface-variant font-body text-lg leading-relaxed">
+						<p>À l'UDTL 31, nous ne recevons d'ordres d'aucun parti politique, d'aucune religion, d'aucun gouvernement. Cette indépendance est le garant de notre capacité à négocier uniquement dans l'intérêt des salariés.</p>
+						<p>Depuis Toulouse, nous rayonnons sur l'ensemble du bassin de la Haute-Garonne pour assurer qu'aucun travailleur ne reste isolé face à sa direction.</p>
+					</div>
+					<div class="mt-12 flex items-center gap-8">
+						<div class="flex flex-col">
+							<span class="text-3xl font-black font-headline text-on-background">31</span>
+							<span class="text-xs font-bold font-headline text-on-surface-variant uppercase">Département</span>
+						</div>
+						<div class="w-px h-10 bg-outline-variant"></div>
+						<div class="flex flex-col">
+							<span class="text-3xl font-black font-headline text-on-background">UD</span>
+							<span class="text-xs font-bold font-headline text-on-surface-variant uppercase">Union</span>
+						</div>
+						<div class="w-px h-10 bg-outline-variant"></div>
+						<button class="font-headline font-bold text-primary border-b-2 border-primary-container pb-1 hover:text-primary-container transition-all">EN SAVOIR PLUS SUR FO</button>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Newsletter / Contact -->
+		<section class="max-w-7xl mx-auto px-8 py-24 text-center">
+			<h2 class="text-4xl font-black font-headline mb-4 tracking-tight">Restez informé de vos droits</h2>
+			<p class="font-body text-on-surface-variant mb-12 max-w-2xl mx-auto">Inscrivez-vous à notre bulletin départemental pour recevoir les dernières mises à jour législatives et les victoires syndicales locales.</p>
+			<div class="flex flex-col md:flex-row gap-4 justify-center max-w-xl mx-auto">
+				<input class="flex-grow bg-surface-container-low border-none border-b-2 border-outline focus:ring-0 focus:border-primary font-body py-4 px-6" placeholder="votre@email.com" type="email"/>
+				<button class="signature-gradient text-on-primary font-headline font-extrabold px-10 py-4 hover:opacity-90 transition-all uppercase tracking-tight">S'ABONNER</button>
+			</div>
+		</section>
+	</main>
+</Layout>

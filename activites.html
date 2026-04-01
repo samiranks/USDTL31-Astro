@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html class="light" lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nos Activités - UDTL 31</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;700;800;900&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#b40011",
+                        "on-secondary-fixed": "#1b1c1c",
+                        "tertiary-container": "#0073c4",
+                        "surface-dim": "#dcd9da",
+                        "on-primary-fixed": "#410002",
+                        "surface-variant": "#e5e2e3",
+                        "surface-tint": "#c00013",
+                        "on-background": "#1b1b1c",
+                        "surface-container-highest": "#e5e2e3",
+                        "secondary-container": "#e2dfde",
+                        "primary-container": "#de171f",
+                        "outline-variant": "#e8bcb7",
+                        "surface-container-low": "#f6f3f4",
+                        "outline": "#936e6a",
+                        "on-surface-variant": "#5e3f3b",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed": "#ffdad6",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed": "#d2e4ff",
+                        "surface-container-high": "#eae7e8",
+                        "on-tertiary-fixed": "#001c37",
+                        "on-primary-container": "#fff3f1",
+                        "background": "#fcf8f9",
+                        "inverse-primary": "#ffb4ab",
+                        "on-primary-fixed-variant": "#93000b",
+                        "inverse-on-surface": "#f3f0f1",
+                        "tertiary": "#005a9b",
+                        "on-primary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed-variant": "#00497f",
+                        "on-tertiary-container": "#f2f5ff",
+                        "tertiary-fixed-dim": "#a0c9ff",
+                        "surface": "#fcf8f9",
+                        "secondary": "#5f5e5e",
+                        "on-error-container": "#93000a",
+                        "surface-bright": "#fcf8f9",
+                        "on-secondary-fixed-variant": "#474746",
+                        "surface-container": "#f0edee",
+                        "on-secondary-container": "#636262",
+                        "inverse-surface": "#303031",
+                        "secondary-fixed": "#e5e2e1",
+                        "secondary-fixed-dim": "#c8c6c5",
+                        "on-surface": "#1b1b1c",
+                        "error": "#ba1a1a",
+                        "primary-fixed-dim": "#ffb4ab",
+                        "on-error": "#ffffff"
+                    },
+                    fontFamily: {
+                        "headline": ["Epilogue"],
+                        "body": ["Work Sans"],
+                        "label": ["Work Sans"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background-color: #fcf8f9;
+            color: #1b1b1c;
+        }
+        h1, h2, h3, .font-headline {
+            font-family: 'Epilogue', sans-serif;
+        }
+        .signature-gradient {
+            background: linear-gradient(135deg, #b40011 0%, #de171f 100%);
+        }
+        .glass-nav {
+            background-color: rgba(252, 248, 249, 0.85); 
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .text-balanced { text-wrap: balance; }
+        .hero-image-mask {
+            mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
+            -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased selection:bg-primary selection:text-white">
+
+<!-- Global Navigation -->
+<nav class="glass-nav fixed w-full z-50 border-b border-outline-variant/30 custom-shadow transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+        <a href="index.html" class="flex items-center gap-4 group">
+            <div class="w-10 h-10 bg-primary flex items-center justify-center rounded-[2px] transform group-hover:-rotate-3 transition-transform">
+                <span class="text-white font-headline font-black text-xl tracking-tighter">31</span>
+            </div>
+            <div class="flex flex-col">
+                <span class="font-headline font-black text-lg leading-none tracking-tight">UDTL</span>
+                <span class="font-body text-[10px] sm:text-xs text-on-surface-variant font-medium tracking-widest uppercase">Transports & Logistique</span>
+            </div>
+        </a>
+        <div class="hidden md:flex items-center gap-8">
+            <a href="index.html" class="font-body text-sm font-medium text-on-surface-variant hover:text-primary transition-colors">Accueil</a>
+            <a href="transport-logistique.html" class="font-body text-sm font-medium text-on-surface-variant hover:text-primary transition-colors">Secteurs</a>
+            <a href="activites.html" class="font-body text-sm font-bold text-primary transition-colors">Actions</a>
+        </div>
+        <div class="flex items-center gap-4">
+            <a href="adhesion.html" class="hidden sm:inline-flex bg-surface-container-high hover:bg-surface-dim text-on-background font-headline font-bold text-xs uppercase tracking-widest px-6 py-3 rounded-sm transition-colors">
+                <span class="mr-2">S'engager</span>
+                <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">arrow_forward</span>
+            </a>
+            <button class="md:hidden flex items-center justify-center w-10 h-10 text-on-background">
+                <span class="material-symbols-outlined text-3xl">menu</span>
+            </button>
+        </div>
+    </div>
+</nav>
+
+<!-- Main Header / Hero Section -->
+<header class="relative pt-40 pb-20 overflow-hidden min-h-[60vh] flex items-center">
+    <div class="absolute inset-0 z-0">
+        <img src="https://images.unsplash.com/photo-1541888086425-d81bb19240f5?q=80&w=2070&auto=format&fit=crop" alt="Construction and action" class="w-full h-full object-cover opacity-60 mix-blend-multiply hero-image-mask lg:object-center object-right"/>
+        <div class="absolute inset-0 bg-background/60"></div>
+    </div>
+    
+    <div class="max-w-7xl mx-auto px-6 relative z-10 w-full">
+        <div class="max-w-3xl">
+            <div class="flex items-center gap-3 mb-6">
+                 <span class="w-12 h-1 bg-primary"></span>
+                 <span class="font-headline font-bold text-xs tracking-widest text-primary uppercase">Sur le terrain</span>
+            </div>
+            
+            <h1 class="text-5xl md:text-7xl font-black font-headline tracking-tighter leading-[0.9] text-on-background mb-8">
+                NOS ACTIONS,<br>
+                <span class="signature-gradient text-transparent bg-clip-text">VOS DROITS.</span>
+            </h1>
+            
+            <p class="text-xl md:text-2xl font-body font-light text-on-surface-variant leading-relaxed max-w-2xl mb-12 text-balanced">
+                Négociations salariales, défense juridique, et actions de protestation. Découvrez l'engagement quotidien de l'UDTL 31 pour faire valoir vos conditions de travail.
+            </p>
+        </div>
+    </div>
+</header>
+
+<main class="max-w-7xl mx-auto px-6 py-12 md:py-24">
+    <!-- Filters / Navigation -->
+    <div class="flex flex-wrap items-center gap-4 mb-16 border-b border-outline-variant/30 pb-4">
+        <button class="font-headline font-bold text-sm tracking-widest uppercase border-b-2 border-primary text-primary pb-2 px-2 transition-colors">Toutes les actus</button>
+        <button class="font-headline font-bold text-sm tracking-widest uppercase text-on-surface-variant hover:text-on-background pb-2 px-2 transition-colors">Négociations</button>
+        <button class="font-headline font-bold text-sm tracking-widest uppercase text-on-surface-variant hover:text-on-background pb-2 px-2 transition-colors">Juridique</button>
+        <button class="font-headline font-bold text-sm tracking-widest uppercase text-on-surface-variant hover:text-on-background pb-2 px-2 transition-colors">Grèves & Mouvements</button>
+    </div>
+
+    <!-- The Editorial Feed -->
+    <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 gap-y-16">
+        
+        <!-- Article Card 1 -->
+        <article class="group bg-surface-container-lowest flex flex-col h-full rounded-sm overflow-hidden custom-shadow hover:shadow-2xl transition-all duration-500">
+            <div class="relative h-64 overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?q=80&w=2070&auto=format&fit=crop" alt="Réunion" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"/>
+                <div class="absolute top-4 left-4 bg-tertiary-container text-on-tertiary-container font-headline font-bold text-[10px] px-3 py-1 uppercase tracking-widest rounded-[2px] shadow-sm">
+                    Négociation
+                </div>
+            </div>
+            <div class="p-8 flex flex-col flex-grow">
+                <div class="font-body text-xs text-on-surface-variant font-bold tracking-widest uppercase mb-4">12 Octobre 2024</div>
+                <h3 class="font-headline font-black text-2xl tracking-tight leading-tight mb-4 group-hover:text-primary transition-colors">
+                    Revalorisation de 5% obtenue pour les chauffeurs routiers.
+                </h3>
+                <p class="font-body text-sm text-on-surface-variant leading-relaxed mb-8 flex-grow">
+                    Suite à trois jours de négociations intensives avec les instances patronales, l'UDTL 31 a arraché un accord historique concernant la grille tarifaire.
+                </p>
+                <a href="#" class="inline-flex items-center gap-2 font-headline font-bold text-[11px] text-on-background uppercase tracking-widest border-b border-on-background pb-1 w-fit group-hover:text-primary group-hover:border-primary transition-colors">
+                    Lire l'article complet <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                </a>
+            </div>
+        </article>
+
+        <!-- Article Card 2 -->
+        <article class="group bg-surface-container-lowest flex flex-col h-full rounded-sm overflow-hidden custom-shadow hover:shadow-2xl transition-all duration-500">
+            <div class="relative h-64 overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1589578228468-ebce1ce6414f?q=80&w=1953&auto=format&fit=crop" alt="Victoire juridique" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"/>
+                <div class="absolute top-4 left-4 bg-tertiary-container text-on-tertiary-container font-headline font-bold text-[10px] px-3 py-1 uppercase tracking-widest rounded-[2px] shadow-sm">
+                    Action Juridique
+                </div>
+            </div>
+            <div class="p-8 flex flex-col flex-grow">
+                <div class="font-body text-xs text-on-surface-variant font-bold tracking-widest uppercase mb-4">28 Septembre 2024</div>
+                <h3 class="font-headline font-black text-2xl tracking-tight leading-tight mb-4 group-hover:text-primary transition-colors">
+                    Victoire au Prud'hommes contre la société LogisExpress
+                </h3>
+                <p class="font-body text-sm text-on-surface-variant leading-relaxed mb-8 flex-grow">
+                    Le tribunal a statué en faveur de 12 salariés licenciés abusivement. La justice a reconnu les heures supplémentaires non payées sur les deux dernières années.
+                </p>
+                <a href="#" class="inline-flex items-center gap-2 font-headline font-bold text-[11px] text-on-background uppercase tracking-widest border-b border-on-background pb-1 w-fit group-hover:text-primary group-hover:border-primary transition-colors">
+                    Lire l'article complet <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                </a>
+            </div>
+        </article>
+
+        <!-- Article Card 3 -->
+        <article class="group bg-surface-container-lowest flex flex-col h-full rounded-sm overflow-hidden custom-shadow hover:shadow-2xl transition-all duration-500">
+            <div class="relative h-64 overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1620005720977-1c43714cddcc?q=80&w=1974&auto=format&fit=crop" alt="Grève logistique" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"/>
+                <div class="absolute top-4 left-4 bg-primary text-on-primary font-headline font-bold text-[10px] px-3 py-1 uppercase tracking-widest rounded-[2px] shadow-sm">
+                    Mouvement Social
+                </div>
+            </div>
+            <div class="p-8 flex flex-col flex-grow">
+                <div class="font-body text-xs text-on-surface-variant font-bold tracking-widest uppercase mb-4">En cours</div>
+                <h3 class="font-headline font-black text-2xl tracking-tight leading-tight mb-4 group-hover:text-primary transition-colors">
+                    Préavis de grève illimitée pour la plateforme fret de Blagnac
+                </h3>
+                <p class="font-body text-sm text-on-surface-variant leading-relaxed mb-8 flex-grow">
+                    Face au refus de la direction d'adapter les rythmes de nuit et l'absence de prime de pénibilité, les équipes logistiques de Blagnac entament un mouvement dur.
+                </p>
+                <a href="#" class="inline-flex items-center gap-2 font-headline font-bold text-[11px] text-primary uppercase tracking-widest border-b border-primary pb-1 w-fit hover:opacity-80 transition-opacity">
+                    Suivre le mouvement <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                </a>
+            </div>
+        </article>
+
+        <!-- Article Card 4 (without image to show editorial layout) -->
+        <article class="group bg-surface-container-low flex flex-col h-full rounded-sm overflow-hidden p-8 border-t-8 border-tertiary-container shadow-sm hover:shadow-xl transition-all duration-500">
+            <div class="flex-grow">
+                <div class="font-body text-xs text-on-surface-variant font-bold tracking-widest uppercase mb-4">Dossier Spécial</div>
+                <h3 class="font-headline font-black text-2xl tracking-tight leading-tight mb-4 group-hover:text-tertiary-container transition-colors">
+                    Analyse des risques TMS dans la branche livraison urbaine.
+                </h3>
+                <p class="font-body text-sm text-on-surface-variant leading-relaxed mb-8">
+                    Notre bureau d'étude publie les résultats d'une enquête sur six mois impliquant 300 coursiers et livreurs toulousains. Le bilan est alarmant concernant le matériel imposé.
+                </p>
+                <ul class="space-y-3 mb-8">
+                     <li class="flex items-start gap-2 text-sm font-body text-on-background">
+                         <span class="material-symbols-outlined text-primary text-sm mt-[2px]" style="font-variation-settings: 'FILL' 1;">warning</span>
+                         80% se plaignent du dos.
+                     </li>
+                     <li class="flex items-start gap-2 text-sm font-body text-on-background">
+                         <span class="material-symbols-outlined text-primary text-sm mt-[2px]" style="font-variation-settings: 'FILL' 1;">warning</span>
+                         Véhicules utilitaires inadaptés.
+                     </li>
+                </ul>
+            </div>
+            <a href="#" class="inline-flex items-center gap-2 font-headline font-bold text-[11px] text-on-background uppercase tracking-widest border-b border-on-background pb-1 w-fit group-hover:text-tertiary-container group-hover:border-tertiary-container transition-colors mt-auto">
+                Télécharger le PDF <span class="material-symbols-outlined text-sm">download</span>
+            </a>
+        </article>
+        
+        <!-- Article Card 5 -->
+        <article class="group bg-surface-container-lowest flex flex-col h-full rounded-sm overflow-hidden custom-shadow hover:shadow-2xl transition-all duration-500">
+            <div class="relative h-64 overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1502444330042-d1a1ddf9bb5b?q=80&w=2073&auto=format&fit=crop" alt="Santé" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"/>
+                <div class="absolute top-4 left-4 bg-tertiary-container text-on-tertiary-container font-headline font-bold text-[10px] px-3 py-1 uppercase tracking-widest rounded-[2px] shadow-sm">
+                    Négociation
+                </div>
+            </div>
+            <div class="p-8 flex flex-col flex-grow">
+                <div class="font-body text-xs text-on-surface-variant font-bold tracking-widest uppercase mb-4">15 Août 2024</div>
+                <h3 class="font-headline font-black text-2xl tracking-tight leading-tight mb-4 group-hover:text-primary transition-colors">
+                    Nouveaux accords sur la mutuelle santé obligatoire.
+                </h3>
+                <p class="font-body text-sm text-on-surface-variant leading-relaxed mb-8 flex-grow">
+                    Meilleure prise en charge des frais dentaires et optiques pour tous les salariés de la branche logisique de la région Occitanie.
+                </p>
+                <a href="#" class="inline-flex items-center gap-2 font-headline font-bold text-[11px] text-on-background uppercase tracking-widest border-b border-on-background pb-1 w-fit group-hover:text-primary group-hover:border-primary transition-colors">
+                    Lire l'article complet <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                </a>
+            </div>
+        </article>
+
+        <!-- Newsletter / Engage Card -->
+        <div class="signature-gradient text-on-primary p-8 md:p-12 rounded-sm shadow-xl flex flex-col justify-center items-start">
+             <span class="material-symbols-outlined text-6xl mb-6 text-on-primary" style="font-variation-settings: 'FILL' 1;">mail</span>
+             <h3 class="font-headline font-black text-3xl tracking-tight leading-none mb-4">Ne manquez aucune action.</h3>
+             <p class="font-body text-sm text-on-primary/90 mb-8 max-w-sm">Abonnez-vous à notre lettre d'information hebdomadaire pour suivre nos luttes et l'évolution de vos droits syndicaux locaux.</p>
+             <form class="w-full relative">
+                 <input type="email" placeholder="Votre adresse email" class="w-full bg-white/10 border border-white/20 text-white placeholder-white/50 rounded-sm font-body px-4 py-4 text-sm focus:ring-2 focus:ring-white focus:outline-none backdrop-blur-sm" required>
+                 <button type="submit" class="absolute right-2 top-2 bottom-2 bg-on-primary text-primary font-headline font-bold text-[10px] tracking-widest uppercase px-4 rounded-[2px] hover:bg-surface-dim transition-colors">
+                     S'inscrire
+                 </button>
+             </form>
+        </div>
+
+    </section>
+
+    <!-- Pagination -->
+    <div class="mt-20 flex justify-center items-center gap-2">
+         <button class="w-10 h-10 flex items-center justify-center border border-outline-variant/50 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-[2px]">
+              <span class="material-symbols-outlined text-sm">chevron_left</span>
+         </button>
+         <button class="w-10 h-10 flex items-center justify-center bg-primary text-on-primary font-headline font-bold text-xs rounded-[2px]">1</button>
+         <button class="w-10 h-10 flex items-center justify-center border border-outline-variant/50 text-on-surface-variant hover:bg-surface-container-high transition-colors font-headline font-bold text-xs rounded-[2px]">2</button>
+         <button class="w-10 h-10 flex items-center justify-center border border-outline-variant/50 text-on-surface-variant hover:bg-surface-container-high transition-colors font-headline font-bold text-xs rounded-[2px]">3</button>
+         <span class="px-2 text-on-surface-variant">...</span>
+         <button class="w-10 h-10 flex items-center justify-center border border-outline-variant/50 text-on-surface-variant hover:bg-surface-container-high transition-colors font-headline font-bold text-xs rounded-[2px]">8</button>
+         <button class="w-10 h-10 flex items-center justify-center border border-outline-variant/50 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-[2px]">
+              <span class="material-symbols-outlined text-sm">chevron_right</span>
+         </button>
+    </div>
+</main>
+
+<!-- Unified Bottom CTA -->
+<section class="max-w-7xl mx-auto px-6 py-24 mb-12">
+    <div class="signature-gradient p-12 md:p-24 rounded-sm relative overflow-hidden text-center group">
+        <div class="relative z-10 flex flex-col items-center">
+            <h2 class="text-4xl md:text-6xl font-black font-headline tracking-tighter text-white mb-6">
+                PLUS FORTS, ENSEMBLE.
+            </h2>
+            <p class="text-white/90 font-body text-base md:text-lg max-w-xl mx-auto mb-10">
+                La défense de vos droits ne se fera pas sans vous. Rejoignez les milliers de travailleurs qui construisent la logistique de demain dans la Haute-Garonne.
+            </p>
+            <a href="adhesion.html" class="inline-flex items-center justify-center bg-white text-primary px-8 py-5 rounded-sm font-headline font-black text-sm tracking-widest uppercase hover:bg-surface-container-lowest transition-colors shadow-2xl hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] transform hover:-translate-y-1">
+                Adhérer à l'UDTL 31
+            </a>
+        </div>
+        <!-- Decorative abstract background forms indicating action -->
+        <div class="absolute top-0 right-0 w-[500px] h-[500px] border border-white/10 rounded-full translate-x-1/2 -translate-y-1/2 group-hover:scale-110 transition-transform duration-1000"></div>
+        <div class="absolute bottom-0 left-0 w-[300px] h-[300px] border border-white/10 rounded-full -translate-x-1/2 translate-y-1/2 group-hover:scale-110 transition-transform duration-1000 delay-100"></div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="border-t border-outline-variant/30 bg-surface-container-lowest pt-20 pb-10">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+        <div class="md:col-span-1">
+            <div class="flex items-center gap-4 mb-6">
+                <div class="w-8 h-8 bg-primary flex items-center justify-center rounded-[2px]">
+                    <span class="text-white font-headline font-black text-sm">31</span>
+                </div>
+                <span class="font-headline font-black text-lg tracking-tight">UDTL</span>
+            </div>
+            <p class="font-body text-sm text-on-surface-variant leading-relaxed">
+                Union Départementale des Transports et de la Logistique de la Haute-Garonne.<br>
+                Syndicat d'action, libre et indépendant.
+            </p>
+        </div>
+        
+        <!-- Standard Links -->
+        <div>
+            <h4 class="font-headline font-bold text-xs uppercase tracking-widest text-on-background mb-6">Syndicat</h4>
+            <ul class="space-y-4">
+                <li><a href="#" class="font-body text-sm text-on-surface-variant hover:text-primary transition-colors">Qui sommes-nous ?</a></li>
+                <li><a href="transport-logistique.html" class="font-body text-sm text-on-surface-variant hover:text-primary transition-colors">Vos Conventions</a></li>
+                <li><a href="#" class="font-body text-sm text-on-surface-variant hover:text-primary transition-colors">Notre bureau</a></li>
+                <li><a href="#" class="font-body text-sm text-on-surface-variant hover:text-primary transition-colors">Permanences</a></li>
+            </ul>
+        </div>
+        
+        <div>
+            <h4 class="font-headline font-bold text-xs uppercase tracking-widest text-on-background mb-6">Actions & Droits</h4>
+            <ul class="space-y-4">
+                <li><a href="activites.html" class="font-body text-sm text-on-surface-variant hover:text-primary transition-colors">Actualités</a></li>
+                <li><a href="#" class="font-body text-sm text-on-surface-variant hover:text-primary transition-colors">Soutien Juridique</a></li>
+                <li><a href="#" class="font-body text-sm text-on-surface-variant hover:text-primary transition-colors">Documentation</a></li>
+                <li><a href="#" class="font-body text-sm text-on-surface-variant hover:text-primary transition-colors">Affiches & Tracts</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h4 class="font-headline font-bold text-xs uppercase tracking-widest text-on-background mb-6">Contact</h4>
+            <ul class="space-y-4">
+                <li class="flex items-start gap-3 text-sm text-on-surface-variant font-body">
+                    <span class="material-symbols-outlined text-primary text-base">location_on</span>
+                    Bourse du Travail<br>19 Place Saint-Sernin<br>31000 Toulouse
+                </li>
+                <li class="flex items-center gap-3 text-sm text-on-surface-variant font-body">
+                    <span class="material-symbols-outlined text-primary text-base">call</span>
+                    05 61 00 00 00
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Legal Bar -->
+    <div class="max-w-7xl mx-auto px-6 border-t border-outline-variant/30 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+        <p class="font-body text-xs text-on-surface-variant font-medium">
+            © 2024 UDTL 31 - Transports et Logistique. Tous droits réservés.
+        </p>
+        <div class="flex gap-6">
+            <a href="#" class="font-body text-xs text-on-surface-variant hover:text-on-background transition-colors">Mentions légales</a>
+            <a href="#" class="font-body text-xs text-on-surface-variant hover:text-on-background transition-colors">Confidentialité</a>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Glass navigation scroll effect
+    window.addEventListener('scroll', () => {
+        const nav = document.querySelector('nav');
+        if (window.scrollY > 20) {
+            nav.classList.add('shadow-md');
+            nav.style.backgroundColor = 'rgba(252, 248, 249, 0.95)';
+        } else {
+            nav.classList.remove('shadow-md');
+            nav.style.backgroundColor = 'rgba(252, 248, 249, 0.85)';
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html class="light" lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dashboard - UDTL 31</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;700;800;900&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#b40011",
+                        "on-secondary-fixed": "#1b1c1c",
+                        "tertiary-container": "#0073c4",
+                        "surface-dim": "#dcd9da",
+                        "on-primary-fixed": "#410002",
+                        "surface-variant": "#e5e2e3",
+                        "surface-tint": "#c00013",
+                        "on-background": "#1b1b1c",
+                        "surface-container-highest": "#e5e2e3",
+                        "secondary-container": "#e2dfde",
+                        "primary-container": "#de171f",
+                        "outline-variant": "#e8bcb7",
+                        "surface-container-low": "#f6f3f4",
+                        "outline": "#936e6a",
+                        "on-surface-variant": "#5e3f3b",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed": "#ffdad6",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed": "#d2e4ff",
+                        "surface-container-high": "#eae7e8",
+                        "on-tertiary-fixed": "#001c37",
+                        "on-primary-container": "#fff3f1",
+                        "background": "#fcf8f9",
+                        "inverse-primary": "#ffb4ab",
+                        "on-primary-fixed-variant": "#93000b",
+                        "inverse-on-surface": "#f3f0f1",
+                        "tertiary": "#005a9b",
+                        "on-primary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed-variant": "#00497f",
+                        "on-tertiary-container": "#f2f5ff",
+                        "tertiary-fixed-dim": "#a0c9ff",
+                        "surface": "#fcf8f9",
+                        "secondary": "#5f5e5e",
+                        "on-error-container": "#93000a",
+                        "surface-bright": "#fcf8f9",
+                        "on-secondary-fixed-variant": "#474746",
+                        "surface-container": "#f0edee",
+                        "on-secondary-container": "#636262",
+                        "inverse-surface": "#303031",
+                        "secondary-fixed": "#e5e2e1",
+                        "secondary-fixed-dim": "#c8c6c5",
+                        "on-surface": "#1b1b1c",
+                        "error": "#ba1a1a",
+                        "primary-fixed-dim": "#ffb4ab",
+                        "on-error": "#ffffff"
+                    },
+                    fontFamily: {
+                        "headline": ["Epilogue"],
+                        "body": ["Work Sans"],
+                        "label": ["Work Sans"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background-color: #fcf8f9;
+            color: #1b1b1c;
+        }
+        h1, h2, h3, .font-headline {
+            font-family: 'Epilogue', sans-serif;
+        }
+        .signature-gradient {
+            background: linear-gradient(135deg, #b40011 0%, #de171f 100%);
+        }
+        .custom-shadow { box-shadow: 0 10px 30px rgba(94, 63, 59, 0.04); }
+        /* Simple bar chart heights */
+        .bar-red-1 { height: 40%; }
+        .bar-gray-1 { height: 20%; }
+        .bar-red-2 { height: 60%; }
+        .bar-gray-2 { height: 25%; }
+        .bar-red-3 { height: 90%; }
+        .bar-gray-3 { height: 10%; }
+        .bar-red-4 { height: 35%; }
+        .bar-gray-4 { height: 20%; }
+        .bar-red-5 { height: 100%; }
+        .bar-gray-5 { height: 0%; }
+        .bar-red-6 { height: 65%; }
+        .bar-gray-6 { height: 30%; }
+        .bar-red-7 { height: 50%; }
+        .bar-gray-7 { height: 20%; }
+    </style>
+</head>
+<body class="bg-background text-on-background flex min-h-screen">
+
+<!-- Sidebar Navigation -->
+<aside class="fixed top-0 left-0 h-screen w-64 bg-surface-container-lowest border-r border-outline-variant/30 flex flex-col justify-between py-8">
+    
+    <div>
+        <!-- Logo Area -->
+        <div class="px-8 flex items-center gap-4 mb-12">
+            <div class="w-12 h-12 bg-inverse-surface rounded-[2px] flex items-center justify-center relative overflow-hidden">
+                <div class="absolute inset-0 bg-blue-900/40 mix-blend-overlay"></div>
+                <span class="text-white font-headline font-black text-lg relative z-10">31</span>
+            </div>
+            <div>
+                <div class="font-headline font-black text-lg tracking-tight leading-tight">Administration</div>
+                <div class="font-body text-[9px] uppercase tracking-widest text-on-surface-variant">UDTL 31 - Haute-Garonne</div>
+            </div>
+        </div>
+
+        <!-- Navigation Links -->
+        <nav class="flex flex-col space-y-2">
+            <a href="dashboard.html" class="flex items-center gap-4 px-8 py-4 bg-primary/5 text-primary border-r-[3px] border-primary font-body font-bold text-sm tracking-wide">
+                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+                Dashboard
+            </a>
+            <a href="#" class="flex items-center gap-4 px-8 py-4 text-on-surface-variant hover:text-on-background hover:bg-surface-container-low transition-colors font-body font-medium text-sm tracking-wide">
+                <span class="material-symbols-outlined">bar_chart</span>
+                Statistiques
+            </a>
+            <a href="#" class="flex items-center gap-4 px-8 py-4 text-on-surface-variant hover:text-on-background hover:bg-surface-container-low transition-colors font-body font-medium text-sm tracking-wide">
+                <span class="material-symbols-outlined">group</span>
+                Adhérents
+            </a>
+            <a href="#" class="flex items-center gap-4 px-8 py-4 text-on-surface-variant hover:text-on-background hover:bg-surface-container-low transition-colors font-body font-medium text-sm tracking-wide">
+                <span class="material-symbols-outlined">settings</span>
+                Paramètres
+            </a>
+            <a href="#" class="flex items-center gap-4 px-8 py-4 text-on-surface-variant hover:text-on-background hover:bg-surface-container-low transition-colors font-body font-medium text-sm tracking-wide">
+                <span class="material-symbols-outlined">help</span>
+                Aide
+            </a>
+        </nav>
+    </div>
+
+    <!-- Bottom User Area -->
+    <div class="px-8 w-full">
+        <div class="bg-surface-container-low p-4 flex items-center gap-3 rounded-sm mb-4">
+            <div class="w-8 h-8 bg-primary text-on-primary rounded-sm flex items-center justify-center font-headline font-bold text-[10px] uppercase">
+                AD
+            </div>
+            <div class="overflow-hidden">
+                <div class="font-headline font-bold text-xs truncate">Admin UDTL</div>
+                <div class="font-body text-[10px] text-on-surface-variant truncate">admin@udtl31.fr</div>
+            </div>
+        </div>
+        <button class="font-body font-medium text-xs text-on-surface-variant hover:text-primary transition-colors flex items-center gap-2">
+            Déconnexion
+        </button>
+    </div>
+
+</aside>
+
+<!-- Main Dashboard Content -->
+<main class="ml-64 w-full p-12 shrink-0 overflow-x-hidden min-h-screen">
+
+    <!-- Header -->
+    <header class="flex flex-col lg:flex-row lg:items-end justify-between mb-12 gap-8">
+        <div>
+            <div class="flex items-center gap-2 mb-4">
+                <span class="bg-tertiary-container text-on-tertiary-container px-3 py-1 text-[10px] font-bold tracking-widest uppercase rounded-sm">31 - HAUTE-GARONNE</span>
+            </div>
+            <h1 class="text-5xl font-black font-headline tracking-tighter leading-none mb-4">
+                TABLEAU DE BORD<br/><span class="text-primary">ANALYTIQUE.</span>
+            </h1>
+            <p class="font-body text-sm text-on-surface-variant max-w-xl leading-relaxed">
+                Suivi en temps réel des interactions membres et de l'activité numérique de l'Union Départementale des Transports et de la Logistique de la Haute-Garonne.
+            </p>
+        </div>
+        <div class="flex items-center gap-4 whitespace-nowrap">
+            <button class="bg-surface-container-high text-on-background px-6 py-4 rounded-sm font-headline font-bold text-xs tracking-widest uppercase hover:bg-surface-dim transition-colors">
+                EXPORTER PDF
+            </button>
+            <button class="bg-primary text-on-primary px-6 py-4 rounded-sm font-headline font-bold text-xs tracking-widest uppercase hover:bg-primary/90 transition-colors">
+                ACTUALISER
+            </button>
+        </div>
+    </header>
+
+    <!-- KPI Row -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        <!-- Visits -->
+        <div class="bg-surface-container-low p-8 rounded-sm relative overflow-hidden custom-shadow">
+            <h3 class="font-headline font-bold text-[10px] uppercase tracking-widest text-on-surface-variant mb-4">Total Visits</h3>
+            <div class="text-5xl font-black font-headline text-on-background mb-4">12,482</div>
+            <div class="font-body text-xs font-medium text-primary flex items-center gap-1">
+                <span class="material-symbols-outlined text-sm">trending_up</span>
+                +14.2% ce mois
+            </div>
+            <span class="material-symbols-outlined absolute right-6 top-8 text-6xl text-on-surface-variant/10 pointer-events-none" style="font-variation-settings: 'FILL' 1;">visibility</span>
+        </div>
+
+        <!-- Memberships -->
+        <div class="bg-surface-container-low p-8 rounded-sm relative overflow-hidden custom-shadow">
+            <h3 class="font-headline font-bold text-[10px] uppercase tracking-widest text-on-surface-variant mb-4">New Memberships</h3>
+            <div class="text-5xl font-black font-headline text-on-background mb-4">158</div>
+            <div class="font-body text-xs font-medium text-tertiary flex items-center gap-1">
+                <span class="material-symbols-outlined text-sm">trending_up</span>
+                +8% vs dernier trimestre
+            </div>
+            <span class="material-symbols-outlined absolute right-6 top-8 text-6xl text-on-surface-variant/10 pointer-events-none" style="font-variation-settings: 'FILL' 1;">person_add</span>
+        </div>
+
+        <!-- Connection Rate -->
+        <div class="bg-surface-container-low p-8 rounded-sm relative overflow-hidden custom-shadow">
+            <h3 class="font-headline font-bold text-[10px] uppercase tracking-widest text-on-surface-variant mb-4">Connection Rate</h3>
+            <div class="text-5xl font-black font-headline text-on-background mb-4">64.2%</div>
+            <div class="font-body text-xs font-medium text-on-surface-variant flex items-center gap-1">
+                Stabilité opérationnelle
+            </div>
+            <span class="material-symbols-outlined absolute right-6 top-8 text-6xl text-on-surface-variant/10 pointer-events-none" style="font-variation-settings: 'FILL' 1;">bolt</span>
+        </div>
+    </div>
+
+    <!-- Charts and Alerts Row -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
+        
+        <!-- Weekly Activity Chart Box -->
+        <div class="lg:col-span-8 bg-surface-container-lowest p-8 rounded-sm custom-shadow border-l-4 border-primary">
+            <div class="flex items-center justify-between mb-8">
+                <h3 class="font-headline font-black text-lg tracking-tight uppercase">Activité Hebdomadaire</h3>
+                <div class="flex items-center gap-4">
+                    <div class="flex items-center gap-2">
+                        <div class="w-3 h-3 bg-primary"></div>
+                        <span class="font-body text-[10px] font-bold uppercase tracking-widest">Visites</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <div class="w-3 h-3 bg-surface-container-high"></div> <!-- Using light gray as per visual interpretation instead of blue square vs red square if visually different -->
+                        <!-- Actually the mockup shows a red square for Visites and a blue square for Connexions. Let's adjust -->
+                        <div class="w-3 h-3 bg-tertiary"></div>
+                        <span class="font-body text-[10px] font-bold uppercase tracking-widest">Connexions</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Custom CSS Flex Bar Chart -->
+            <div class="h-64 flex items-end justify-between px-4 pb-0 pt-8 border-b-2 border-outline-variant/30 relative mt-4">
+                <!-- Lines in bg -->
+                <div class="absolute w-full top-0 border-t border-outline-variant/20 -z-10"></div>
+                <div class="absolute w-full top-1/2 border-t border-outline-variant/20 -z-10"></div>
+
+                <!-- LUN -->
+                <div class="w-12 h-full flex flex-col justify-end gap-[1px]">
+                     <div class="w-full bg-surface-container-high bar-gray-1"></div>
+                     <div class="w-full bg-primary bar-red-1"></div>
+                </div>
+                <!-- MAR -->
+                <div class="w-12 h-full flex flex-col justify-end gap-[1px]">
+                     <div class="w-full bg-surface-container-high bar-gray-2"></div>
+                     <div class="w-full bg-primary bar-red-2"></div>
+                </div>
+                <!-- MER -->
+                <div class="w-12 h-full flex flex-col justify-end gap-[1px]">
+                     <div class="w-full bg-surface-container-high bar-gray-3"></div>
+                     <div class="w-full bg-primary bar-red-3"></div>
+                </div>
+                <!-- JEU -->
+                <div class="w-12 h-full flex flex-col justify-end gap-[1px]">
+                     <div class="w-full bg-surface-container-high bar-gray-4"></div>
+                     <div class="w-full bg-primary bar-red-4"></div>
+                </div>
+                <!-- VEN -->
+                <div class="w-12 h-full flex flex-col justify-end gap-[1px]">
+                     <div class="w-full bg-surface-container-high bar-gray-5"></div>
+                     <div class="w-full bg-primary bar-red-5"></div>
+                </div>
+                <!-- SAM -->
+                <div class="w-12 h-full flex flex-col justify-end gap-[1px]">
+                     <div class="w-full bg-surface-container-high bar-gray-6"></div>
+                     <div class="w-full bg-primary bar-red-6"></div>
+                </div>
+                <!-- DIM -->
+                <div class="w-12 h-full flex flex-col justify-end gap-[1px]">
+                     <div class="w-full bg-surface-container-high bar-gray-7"></div>
+                     <div class="w-full bg-primary bar-red-7"></div>
+                </div>
+            </div>
+            <div class="flex justify-between px-4 pt-4">
+                <span class="font-headline font-bold text-[9px] uppercase tracking-widest text-on-surface-variant w-12 text-center">LUN</span>
+                <span class="font-headline font-bold text-[9px] uppercase tracking-widest text-on-surface-variant w-12 text-center">MAR</span>
+                <span class="font-headline font-bold text-[9px] uppercase tracking-widest text-on-surface-variant w-12 text-center">MER</span>
+                <span class="font-headline font-bold text-[9px] uppercase tracking-widest text-on-surface-variant w-12 text-center">JEU</span>
+                <span class="font-headline font-bold text-[9px] uppercase tracking-widest text-on-surface-variant w-12 text-center">VEN</span>
+                <span class="font-headline font-bold text-[9px] uppercase tracking-widest text-on-surface-variant w-12 text-center">SAM</span>
+                <span class="font-headline font-bold text-[9px] uppercase tracking-widest text-on-surface-variant w-12 text-center">DIM</span>
+            </div>
+        </div>
+
+        <!-- Verification Accès Box -->
+        <div class="lg:col-span-4 signature-gradient text-on-primary p-8 rounded-sm relative shadow-xl overflow-hidden flex flex-col justify-between">
+            <div>
+                <h3 class="font-headline font-black text-xl tracking-tight uppercase leading-tight mb-4">Vérification des accès</h3>
+                <p class="font-body text-xs leading-relaxed opacity-90 mb-8 font-medium">
+                    3 nouvelles tentatives de connexion nécessitent une validation administrative pour le secteur Aéronautique.
+                </p>
+
+                <!-- Alerts List -->
+                <div class="space-y-3">
+                    <div class="bg-white/10 hover:bg-white/20 transition-colors border border-white/20 rounded-[2px] p-4 flex items-center justify-between cursor-pointer">
+                        <div>
+                            <div class="font-headline font-bold text-[11px] mb-1">ID: #4402</div>
+                            <div class="font-body text-[10px] opacity-80">Secteur: Airbus</div>
+                        </div>
+                        <div class="w-6 h-6 bg-white/20 flex items-center justify-center rounded-[1px]">
+                            <span class="material-symbols-outlined text-white text-sm" style="font-variation-settings: 'FILL' 1;">check</span>
+                        </div>
+                    </div>
+                    <div class="bg-white/10 hover:bg-white/20 transition-colors border border-white/20 rounded-[2px] p-4 flex items-center justify-between cursor-pointer">
+                        <div>
+                            <div class="font-headline font-bold text-[11px] mb-1">ID: #4405</div>
+                            <div class="font-body text-[10px] opacity-80">Secteur: Thalès</div>
+                        </div>
+                        <div class="w-6 h-6 bg-white flex items-center justify-center rounded-[1px]">
+                            <span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">check</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="#" class="font-headline font-bold text-xs uppercase tracking-widest underline underline-offset-4 decoration-2 decoration-white/30 hover:decoration-white transition-all mt-8 block w-max">
+                Voir toutes les alertes
+            </a>
+            
+            <!-- Graphic bleed effect -->
+            <div class="absolute -right-8 -bottom-8 opacity-5 mix-blend-overlay pointer-events-none">
+                <span class="material-symbols-outlined text-[200px]" style="font-variation-settings: 'FILL' 1;">security</span>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Table Section -->
+    <div class="bg-surface-container-lowest rounded-sm custom-shadow overflow-hidden">
+        <div class="p-8 border-b border-outline-variant/30 flex items-center justify-between">
+             <h3 class="font-headline font-black text-lg tracking-tight uppercase">Dernières Connexions</h3>
+        </div>
+        <div class="overflow-x-auto">
+            <table class="w-full text-left font-body text-sm">
+                <thead>
+                    <tr class="border-b border-outline-variant/30 bg-surface-container-low/50">
+                        <th class="py-4 px-8 font-headline font-bold text-[9px] uppercase tracking-widest text-on-surface-variant">User ID</th>
+                        <th class="py-4 px-8 font-headline font-bold text-[9px] uppercase tracking-widest text-on-surface-variant">Secteur Activité</th>
+                        <th class="py-4 px-8 font-headline font-bold text-[9px] uppercase tracking-widest text-on-surface-variant">Statut</th>
+                        <th class="py-4 px-8 font-headline font-bold text-[9px] uppercase tracking-widest text-on-surface-variant">Horodatage</th>
+                        <th class="py-4 px-8 font-headline font-bold text-[9px] uppercase tracking-widest text-on-surface-variant text-right">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="border-b border-outline-variant/20 hover:bg-surface transition-colors cursor-pointer group">
+                        <td class="py-5 px-8 font-headline font-bold text-xs text-on-background">MBR-8821</td>
+                        <td class="py-5 px-8 text-on-surface-variant">Services Publics</td>
+                        <td class="py-5 px-8">
+                            <span class="bg-green-100 text-green-800 text-[9px] font-headline font-bold px-2 py-1 rounded-[2px] uppercase tracking-wider">Actif</span>
+                        </td>
+                        <td class="py-5 px-8 text-on-surface-variant text-xs">14/05/2024 - 10:42</td>
+                        <td class="py-5 px-8 text-right">
+                            <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors cursor-pointer">more_vert</span>
+                        </td>
+                    </tr>
+                    <tr class="border-b border-outline-variant/20 hover:bg-surface transition-colors cursor-pointer group">
+                        <td class="py-5 px-8 font-headline font-bold text-xs text-on-background">MBR-9014</td>
+                        <td class="py-5 px-8 text-on-surface-variant">Commerce / Vente</td>
+                        <td class="py-5 px-8">
+                            <span class="bg-green-100 text-green-800 text-[9px] font-headline font-bold px-2 py-1 rounded-[2px] uppercase tracking-wider">Actif</span>
+                        </td>
+                        <td class="py-5 px-8 text-on-surface-variant text-xs">14/05/2024 - 10:15</td>
+                        <td class="py-5 px-8 text-right">
+                            <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors cursor-pointer">more_vert</span>
+                        </td>
+                    </tr>
+                    <tr class="border-b border-outline-variant/20 hover:bg-surface transition-colors cursor-pointer group">
+                        <td class="py-5 px-8 font-headline font-bold text-xs text-on-background">MBR-7763</td>
+                        <td class="py-5 px-8 text-on-surface-variant">Santé & Social</td>
+                        <td class="py-5 px-8">
+                            <span class="bg-yellow-100 text-yellow-800 text-[9px] font-headline font-bold px-2 py-1 rounded-[2px] uppercase tracking-wider">En Attente</span>
+                        </td>
+                        <td class="py-5 px-8 text-on-surface-variant text-xs">14/05/2024 - 09:58</td>
+                        <td class="py-5 px-8 text-right">
+                            <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors cursor-pointer">more_vert</span>
+                        </td>
+                    </tr>
+                    <tr class="hover:bg-surface transition-colors cursor-pointer group">
+                        <td class="py-5 px-8 font-headline font-bold text-xs text-on-background">MBR-8120</td>
+                        <td class="py-5 px-8 text-on-surface-variant">Transports</td>
+                        <td class="py-5 px-8">
+                            <span class="bg-red-100 text-red-800 text-[9px] font-headline font-bold px-2 py-1 rounded-[2px] uppercase tracking-wider">Bloqué</span>
+                        </td>
+                        <td class="py-5 px-8 text-on-surface-variant text-xs">14/05/2024 - 09:32</td>
+                        <td class="py-5 px-8 text-right">
+                            <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors cursor-pointer">more_vert</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="bg-surface-container-low/50 p-4 border-t border-outline-variant/30 text-center">
+             <button class="font-headline font-bold text-[10px] text-primary uppercase tracking-widest hover:tracking-[0.2em] transition-all py-2">
+                 Afficher l'historique complet
+             </button>
+        </div>
+    </div>
+
+</main>
+
+</body>
+</html>

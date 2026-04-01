@@ -1,0 +1,127 @@
+---
+import '../styles/global.css';
+
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="fr" class="light">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<title>{title}</title>
+		
+		<!-- Google Fonts & Icons -->
+		<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;700;800;900&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+		<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+		<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+	</head>
+	<body class="bg-background text-on-background">
+		<!-- Top Navigation Bar -->
+		<nav class="fixed top-0 w-full z-50 glass-nav border-none">
+			<div class="max-w-7xl mx-auto flex justify-between items-center px-8 py-2">
+				<div class="flex items-center">
+					<img alt="UDTL 31 Logo" class="h-20 w-auto object-contain py-2 transition-transform hover:scale-105" src="https://lh3.googleusercontent.com/aida/ADBb0uiZkvlcrJWhYcZQU8YMZ-uTAj19LLaGnHWFmAUF6a8cSFNCdk_ugp8OAUdijb0IF1rP7_y59ArTFOS7oC392ZFeKMrhhRdl-sEwFUVU9IOjO7HMaj8s-gZ8SQXoScISAHNrpagrJSKpKZc0cpQDGhX7sDWL8jyUigp9DKeDZschTawZu9038yp4tXAuDCeNBQure93cc91NgAHU2NIQNgad11iKTlodWWpTik3scELew5DjpwcJjL96Rg"/>
+				</div>
+				<div class="hidden md:flex items-center space-x-8">
+					<a class="text-on-background hover:text-primary font-headline tracking-tight font-bold transition-colors duration-200 ease-in-out" href="/">Accueil</a>
+					<a class="text-on-background hover:text-primary font-headline tracking-tight font-bold transition-colors duration-200 ease-in-out" href="/activites">Activités</a>
+					<a class="text-on-background hover:text-primary font-headline tracking-tight font-bold transition-colors duration-200 ease-in-out" href="/transport-logistique">Transport & Logistique</a>
+					<a class="text-on-background hover:text-primary font-headline tracking-tight font-bold transition-colors duration-200 ease-in-out" href="/adhesion">Adhésion</a>
+				</div>
+				<div class="flex items-center gap-6">
+					<div class="hidden lg:flex items-center bg-surface-container-low px-4 py-2 rounded-sm border-b-2 border-outline">
+						<span class="material-symbols-outlined text-on-surface-variant text-sm mr-2">search</span>
+						<input class="bg-transparent border-none focus:ring-0 text-sm w-32 font-body" placeholder="Rechercher..." type="text"/>
+					</div>
+					<a href="/dashboard" class="material-symbols-outlined text-on-background hover:opacity-80 active:scale-95 transition-all">account_balance_wallet</a>
+					<a href="/adhesion" class="signature-gradient text-on-primary px-6 py-2 rounded-sm font-headline font-bold text-sm tracking-tight hover:opacity-90 active:scale-95 transition-all">
+						Rejoignez-nous
+					</a>
+				</div>
+			</div>
+		</nav>
+
+		<!-- Main Content Slot -->
+		<slot />
+
+		<!-- Footer -->
+		<footer class="w-full border-t border-outline-variant/30 bg-surface-container-lowest mt-16 pb-10">
+			<!-- Legal Bar (Simplified from original for layout demo, copy full original footer structures later if needed, or I can paste the whole footer now) -->
+			<!-- Using the full footer from index.html -->
+			<div class="max-w-7xl mx-auto px-8 py-12 grid grid-cols-1 md:grid-cols-4 gap-8">
+				<div class="col-span-1 md:col-span-1">
+					<div class="flex flex-col gap-4">
+						<span class="font-headline font-black text-lg text-on-background">UDTL 31</span>
+						<p class="font-body text-sm leading-relaxed text-on-surface-variant">Union Départementale des Transports et de la Logistique de la Haute-Garonne. Affiliée à Force Ouvrière.</p>
+					</div>
+				</div>
+				<div>
+					<h4 class="font-headline font-bold text-sm uppercase tracking-widest mb-6 text-on-background">Navigation</h4>
+					<ul class="space-y-4 font-body text-sm">
+						<li><a class="text-on-surface-variant hover:text-primary transition-all underline underline-offset-4 decoration-2 decoration-primary-container/30" href="/">Accueil</a></li>
+						<li><a class="text-on-surface-variant hover:text-primary transition-all underline underline-offset-4 decoration-2 decoration-primary-container/30" href="/activites">Activités</a></li>
+						<li><a class="text-on-surface-variant hover:text-primary transition-all underline underline-offset-4 decoration-2 decoration-primary-container/30" href="/dashboard">Espace Militant</a></li>
+						<li><a class="text-on-surface-variant hover:text-primary transition-all underline underline-offset-4 decoration-2 decoration-primary-container/30" href="#">Contact</a></li>
+					</ul>
+				</div>
+				<div>
+					<h4 class="font-headline font-bold text-sm uppercase tracking-widest mb-6 text-on-background">Juridique</h4>
+					<ul class="space-y-4 font-body text-sm">
+						<li><a class="text-on-surface-variant hover:text-primary transition-all underline underline-offset-4 decoration-2 decoration-primary-container/30" href="#">Mentions Légales</a></li>
+						<li><a class="text-on-surface-variant hover:text-primary transition-all underline underline-offset-4 decoration-2 decoration-primary-container/30" href="#">Confidentialité</a></li>
+						<li><a class="text-on-surface-variant hover:text-primary transition-all underline underline-offset-4 decoration-2 decoration-primary-container/30" href="#">RGPD</a></li>
+					</ul>
+				</div>
+				<div>
+					<h4 class="font-headline font-bold text-sm uppercase tracking-widest mb-6 text-on-background">Localisation</h4>
+					<div class="h-32 bg-surface-container-highest mb-4" data-location="Toulouse">
+						<div class="w-full h-full flex items-center justify-center opacity-40">
+							<span class="material-symbols-outlined text-4xl">location_on</span>
+						</div>
+					</div>
+					<p class="font-body text-xs text-on-surface-variant">93 Boulevard de Suisse, 31200 Toulouse</p>
+				</div>
+			</div>
+			<div class="max-w-7xl mx-auto px-8 py-6 border-t border-outline-variant/30 flex flex-col md:flex-row justify-between items-center gap-4">
+				<p class="font-body text-xs text-on-surface-variant">© 2024 UDTL 31 Midi-Pyrénées / Haute-Garonne. Le syndicat de l'indépendance.</p>
+				<div class="flex gap-4">
+					<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors">social_leaderboard</span>
+					<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors">share</span>
+				</div>
+			</div>
+		</footer>
+
+		<script>
+			// Glass navigation scroll effect
+			window.addEventListener('scroll', () => {
+				const nav = document.querySelector('nav');
+				if (nav) {
+					if (window.scrollY > 20) {
+						nav.classList.add('shadow-md');
+						nav.style.backgroundColor = 'rgba(252, 248, 249, 0.95)';
+					} else {
+						nav.classList.remove('shadow-md');
+						nav.style.backgroundColor = 'rgba(252, 248, 249, 0.85)';
+					}
+				}
+			});
+            
+            // Netlify Identity Login Redirect
+            if ((window as any).netlifyIdentity) {
+              (window as any).netlifyIdentity.on("init", (user: any) => {
+                if (!user) {
+                  (window as any).netlifyIdentity.on("login", () => {
+                    document.location.href = "/admin/";
+                  });
+                }
+              });
+            }
+		</script>
+	</body>
+</html>

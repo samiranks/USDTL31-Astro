@@ -1,0 +1,56 @@
+---
+import '../styles/global.css';
+
+interface Props {
+	title: string;
+    description?: string;
+}
+
+const { title, description = "UDTL 31 - Union Départementale des Transports et de la Logistique de la Haute-Garonne. Affiliée à Force Ouvrière." } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="fr" class="light scroll-smooth h-full">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+        <meta name="description" content={description} />
+		<title>{title} | UDTL 31</title>
+		
+		<!-- Google Fonts & Icons -->
+		<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;700;800;900&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+		<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+	</head>
+	<body class="bg-background text-on-background h-full flex flex-col selection:bg-primary/10 selection:text-primary">
+		<slot name="nav" />
+        
+		<div class="flex-grow">
+			<slot />
+		</div>
+
+		<slot name="footer" />
+
+        <script>
+            // Improved Glass navigation scroll effect logic for components
+            window.addEventListener('scroll', () => {
+                const nav = document.querySelector('nav');
+                if (nav) {
+                    if (window.scrollY > 20) {
+                        nav.classList.add('shadow-sm', 'glass-scrolled');
+                    } else {
+                        nav.classList.remove('shadow-sm', 'glass-scrolled');
+                    }
+                }
+            });
+        </script>
+        <style is:global>
+            .glass-scrolled {
+                background-color: rgba(252, 248, 249, 0.98) !important;
+                border-bottom: 1px solid var(--color-outline-variant) !important;
+                opacity: 0.2; /* Ghost border feeling */
+            }
+        </style>
+	</body>
+</html>

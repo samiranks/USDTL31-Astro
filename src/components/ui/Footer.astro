@@ -1,0 +1,83 @@
+---
+const links = {
+    navigation: [
+        { label: 'Accueil', href: '/' },
+        { label: 'Activités', href: '/activites' },
+        { label: 'Espace Militant', href: '/dashboard' },
+        { label: 'Contact', href: '#' }
+    ],
+    juridique: [
+        { label: 'Mentions Légales', href: '#' },
+        { label: 'Confidentialité', href: '#' },
+        { label: 'RGPD', href: '#' }
+    ]
+};
+---
+
+<footer class="w-full bg-surface-container-high border-none py-16">
+    <div class="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-4 gap-12 lg:gap-24">
+        
+        <!-- Brand -->
+        <div class="col-span-1 md:col-span-1 space-y-6">
+            <h3 class="font-headline font-black text-2xl tracking-tighter text-on-background">UDTL 31</h3>
+            <p class="font-body text-sm leading-relaxed text-on-surface-variant max-w-[240px]">
+                Union Départementale des Transports et de la Logistique de la Haute-Garonne. Affiliée à <strong>Force Ouvrière</strong>.
+            </p>
+        </div>
+
+        <!-- Links -->
+        <div>
+            <h4 class="font-headline font-bold text-[10px] uppercase tracking-[0.2em] mb-8 text-primary">Navigation</h4>
+            <ul class="space-y-4">
+                {links.navigation.map(link => (
+                    <li>
+                        <a 
+                            href={link.href} 
+                            class="font-body text-sm text-on-surface-variant hover:text-primary transition-all underline underline-offset-8 decoration-transparent hover:decoration-primary/30"
+                        >
+                            {link.label}
+                        </a>
+                    </li>
+                ))}
+            </ul>
+        </div>
+
+        <div>
+            <h4 class="font-headline font-bold text-[10px] uppercase tracking-[0.2em] mb-8 text-primary">Juridique</h4>
+            <ul class="space-y-4">
+                {links.juridique.map(link => (
+                    <li>
+                        <a 
+                            href={link.href} 
+                            class="font-body text-sm text-on-surface-variant hover:text-primary transition-all underline underline-offset-8 decoration-transparent hover:decoration-primary/30"
+                        >
+                            {link.label}
+                        </a>
+                    </li>
+                ))}
+            </ul>
+        </div>
+
+        <!-- Location -->
+        <div class="space-y-6">
+            <h4 class="font-headline font-bold text-[10px] uppercase tracking-[0.2em] mb-2 text-primary">Localisation</h4>
+            <div class="bg-surface-container-highest p-8 rounded-sm grayscale hover:grayscale-0 transition-all duration-500 opacity-60">
+                <span class="material-symbols-outlined text-4xl block mb-4">location_on</span>
+                <p class="font-body text-xs font-bold text-on-background leading-relaxed">
+                    93 Boulevard de Suisse<br/>31200 Toulouse
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="max-w-7xl mx-auto px-8 mt-24 pt-10 border-t border-outline-variant/10 flex flex-col md:flex-row justify-between items-center gap-6">
+        <p class="font-body text-[10px] uppercase tracking-widest text-on-surface-variant/60">
+            © 2025 UDTL 31 Midi-Pyrénées / Haute-Garonne. Tous droits réservés.
+        </p>
+        <div class="flex items-center gap-8 opacity-40">
+            <span class="material-symbols-outlined cursor-pointer hover:text-primary hover:opacity-100 transition-all">rss_feed</span>
+            <span class="material-symbols-outlined cursor-pointer hover:text-primary hover:opacity-100 transition-all">share</span>
+        </div>
+    </div>
+</footer>

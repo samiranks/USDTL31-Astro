@@ -1,0 +1,105 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import Nav from '../../components/ui/Nav.astro';
+import Footer from '../../components/ui/Footer.astro';
+import Section from '../../components/ui/Section.astro';
+import Button from '../../components/ui/Button.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const articles = await getCollection('activites');
+  return articles.map(entry => ({
+    params: { id: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<MainLayout title={entry.data.title}>
+    <Nav slot="nav" active="Activités" />
+    
+    <main class="pt-32">
+        <!-- Article Header -->
+        <Section background="low" bleed={true} class="py-24 border-b border-outline-variant/10 text-center">
+            <div class="max-w-4xl mx-auto px-8">
+                <div class="flex items-center justify-center gap-6 mb-10">
+                    <span class="text-primary font-headline font-bold text-[10px] tracking-[0.4em] uppercase">{entry.data.category}</span>
+                    <div class="w-1 h-1 bg-outline-variant/50 rounded-full"></div>
+                    <span class="text-on-surface-variant/40 font-body font-bold text-[10px] uppercase">
+                        {new Date(entry.data.date).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}
+                    </span>
+                </div>
+                
+                <h1 class="text-5xl md:text-8xl font-black font-headline tracking-tighter leading-[0.9] text-on-background mb-12">
+                    {entry.data.title}
+                </h1>
+                
+                <p class="text-2xl font-body text-on-background/80 leading-relaxed max-w-3xl mx-auto italic font-light">
+                    {entry.data.summary}
+                </p>
+            </div>
+        </Section>
+
+        <!-- Main Content -->
+        <Section background="surface" class="py-32">
+            <div class="flex flex-col lg:flex-row gap-20 items-start">
+                <!-- Sidebar (Secondary Info) -->
+                <aside class="w-full lg:w-3/12 order-2 lg:order-1 space-y-12 sticky top-32">
+                    <div class="p-8 bg-surface-container-low border-l-4 border-primary space-y-4">
+                        <h4 class="font-headline font-bold text-[10px] uppercase tracking-widest text-primary">PARTAGER</h4>
+                        <div class="flex gap-4">
+                            <span class="material-symbols-outlined text-2xl cursor-pointer hover:text-primary transition-colors">share</span>
+                            <span class="material-symbols-outlined text-2xl cursor-pointer hover:text-primary transition-colors">print</span>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- Article Body -->
+                <div class="w-full lg:w-9/12 order-1 lg:order-2">
+                    {entry.data.image && (
+                        <div class="aspect-[16/9] mb-16 overflow-hidden bg-on-background/5 shadow-2xl">
+                            <img 
+                                src={entry.data.image} 
+                                alt={entry.data.title}
+                                class="w-full h-full object-cover grayscale opacity-80"
+                            />
+                        </div>
+                    )}
+                    
+                    <div class="prose prose-invert prose-lg max-w-none prose-headings:font-headline prose-headings:font-black prose-headings:tracking-tighter prose-p:font-body prose-p:text-on-surface-variant prose-a:text-primary prose-li:text-on-surface-variant prose-strong:text-on-background">
+                        <Content />
+                    </div>
+
+                    <div class="mt-32 pt-20 border-t border-outline-variant/10">
+                        <Button variant="tertiary" class="p-0 text-sm" onclick="history.back()">
+                            <span class="material-symbols-outlined text-[18px]">keyboard_backspace</span>
+                            RETOUR AUX ARTICLES
+                        </Button>
+                    </div>
+                </div>
+            </div>
+        </Section>
+
+        <!-- Bottom CTA -->
+        <Section background="signature" class="text-center py-32">
+             <h2 class="text-4xl md:text-6xl font-black font-headline italic uppercase tracking-tighter leading-none mb-12">
+                REJOIGNEZ LE COMBAT.
+            </h2>
+            <Button variant="secondary" class="bg-background text-primary px-12 py-6 text-lg hover:bg-on-background hover:text-background" onclick="location.href='/adhesion'">
+                ADHÉRER À L'UDTL 31
+            </Button>
+        </Section>
+    </main>
+
+    <Footer slot="footer" />
+</MainLayout>
+
+<style is:global>
+    /* Custom prose adjustments for Modern Fortress style */
+    .prose h2 { @apply text-4xl mt-16 mb-8 uppercase; }
+    .prose h3 { @apply text-2xl mt-12 mb-6 uppercase tracking-tight; }
+    .prose p { @apply mb-8 leading-[1.8]; }
+</style>

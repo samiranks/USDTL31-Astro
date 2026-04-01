@@ -1,0 +1,62 @@
+---
+import Button from './Button.astro';
+
+const navItems = [
+    { label: 'Accueil', href: '/' },
+    { label: 'Activités', href: '/activites' },
+    { label: 'Transport & Logistique', href: '/transport-logistique' },
+    { label: 'Adhésion', href: '/adhesion' }
+];
+
+interface Props {
+    active?: string;
+}
+
+const { active = 'Accueil' } = Astro.props;
+---
+
+<nav class="fixed top-0 w-full z-50 glass-nav transition-all duration-300">
+    <div class="max-w-7xl mx-auto flex justify-between items-center px-8 py-4">
+        <a href="/" class="flex items-center group">
+            <img 
+                alt="UDTL 31 Logo" 
+                class="h-16 w-auto object-contain transition-transform group-hover:scale-105" 
+                src="https://lh3.googleusercontent.com/aida/ADBb0uiZkvlcrJWhYcZQU8YMZ-uTAj19LLaGnHWFmAUF6a8cSFNCdk_ugp8OAUdijb0IF1rP7_y59ArTFOS7oC392ZFeKMrhhRdl-sEwFUVU9IOjO7HMaj8s-gZ8SQXoScISAHNrpagrJSKpKZc0cpQDGhX7sDWL8jyUigp9DKeDZschTawZu9038yp4tXAuDCeNBQure93cc91NgAHU2NIQNgad11iKTlodWWpTik3scELew5DjpwcJjL96Rg"
+            />
+        </a>
+        
+        <div class="hidden lg:flex items-center space-x-12">
+            {navItems.map(item => (
+                <a 
+                    href={item.href} 
+                    class:list={[
+                        "font-headline font-bold text-[11px] uppercase tracking-widest transition-colors duration-200",
+                        active === item.label ? "text-primary border-b-2 border-primary pb-1" : "text-on-background/70 hover:text-primary"
+                    ]}
+                >
+                    {item.label}
+                </a>
+            ))}
+        </div>
+
+        <div class="flex items-center gap-6">
+            <a href="/dashboard" class="material-symbols-outlined text-on-background/60 hover:text-primary transition-all p-2 bg-surface-container-low rounded-sm">
+                account_balance_wallet
+            </a>
+            <Button variant="signature" class="hidden sm:inline-flex px-8 text-[11px]" onclick="location.href='/adhesion'">
+                Rejoignez-nous
+            </Button>
+            
+            <!-- Mobile Menu Toggle (Simplified) -->
+            <button class="lg:hidden material-symbols-outlined p-2">menu</button>
+        </div>
+    </div>
+</nav>
+
+<style>
+    .glass-nav {
+        background-color: rgba(252, 248, 249, 0.8);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+    }
+</style>

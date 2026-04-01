@@ -1,170 +1,137 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import MainLayout from '../layouts/MainLayout.astro';
+import Nav from '../components/ui/Nav.astro';
+import Footer from '../components/ui/Footer.astro';
+import Section from '../components/ui/Section.astro';
+import Card from '../components/ui/Card.astro';
+import Button from '../components/ui/Button.astro';
 import { getCollection } from 'astro:content';
 
 const allArticles = await getCollection('activites');
 const sortedArticles = allArticles.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
-// Helper to define badge colors based on category
-const getBadgeClass = (category: string) => {
-    switch (category) {
-        case 'Grèves & Mouvements':
-            return 'bg-primary text-on-primary';
-        case 'Juridique':
-            return 'bg-tertiary-container text-on-tertiary-container';
-        case 'Négociations':
-            return 'bg-tertiary-container text-on-tertiary-container';
-        default:
-            return 'bg-surface-variant text-on-surface-variant';
-    }
-};
+const categories = ["Toutes", "Négociations", "Juridique", "Grèves & Mouvements", "Actualité Générale"];
 ---
 
-<Layout title="Nos Activités - UDTL 31">
-	<!-- Main Header / Hero Section -->
-	<header class="relative pt-40 pb-20 overflow-hidden min-h-[60vh] flex items-center">
-		<div class="absolute inset-0 z-0 bg-black/60">
-			<img src="https://images.unsplash.com/photo-1541888086425-d81bb19240f5?q=80&w=2070&auto=format&fit=crop" alt="Construction and action" class="w-full h-full object-cover opacity-40 mix-blend-multiply lg:object-center object-right" style="mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%); -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);"/>
-			<div class="absolute inset-0 bg-background/60"></div>
-		</div>
-		
-		<div class="max-w-7xl mx-auto px-6 relative z-10 w-full">
-			<div class="max-w-3xl">
-				<div class="flex items-center gap-3 mb-6">
-					 <span class="w-12 h-1 bg-primary"></span>
-					 <span class="font-headline font-bold text-xs tracking-widest text-primary uppercase">Sur le terrain</span>
-				</div>
-				
-				<h1 class="text-5xl md:text-7xl font-black font-headline tracking-tighter leading-[0.9] text-on-background mb-8">
-					NOS ACTIONS,<br>
-					<span class="signature-gradient text-transparent bg-clip-text">VOS DROITS.</span>
-				</h1>
-				
-				<p class="text-xl md:text-2xl font-body font-light text-on-surface-variant leading-relaxed max-w-2xl mb-12" style="text-wrap: balance;">
-					Négociations salariales, défense juridique, et actions de protestation. Découvrez l'engagement quotidien de l'UDTL 31 pour faire valoir vos conditions de travail.
-				</p>
-			</div>
-		</div>
-	</header>
+<MainLayout title="Activités">
+    <Nav slot="nav" active="Activités" />
+    
+    <main class="pt-32">
+        <!-- Hero Header -->
+        <Section background="low" bleed={true} class="py-24 border-b border-outline-variant/10">
+            <div class="max-w-7xl mx-auto px-8">
+                <div class="flex items-center gap-4 mb-8">
+                    <span class="text-primary font-headline font-bold text-[10px] tracking-[0.4em] uppercase">SUR LE TERRAIN</span>
+                    <div class="h-px flex-grow bg-outline-variant/20"></div>
+                </div>
+                <h1 class="text-6xl md:text-9xl font-black font-headline tracking-tighter leading-[0.8] text-on-background mb-10">
+                    ACTIONS & <br/> <span class="signature-gradient text-transparent bg-clip-text italic">RÉSULTATS.</span>
+                </h1>
+                <p class="text-xl font-body text-on-surface-variant max-w-2xl leading-relaxed font-light">
+                    Retrouvez l'historique de nos combats syndicaux en Haute-Garonne. Une transparence totale sur nos négociations et nos victoires.
+                </p>
+            </div>
+        </Section>
 
-	<main class="max-w-7xl mx-auto px-6 py-12 md:py-24">
-		<!-- Filters / Navigation -->
-		<div class="flex flex-wrap items-center gap-4 mb-16 border-b border-outline-variant/30 pb-4" id="filters-container">
-			<button data-filter="all" class="filter-btn font-headline font-bold text-sm tracking-widest uppercase border-b-2 border-primary text-primary pb-2 px-2 transition-all">Toutes les actus</button>
-			<button data-filter="Négociations" class="filter-btn font-headline font-bold text-sm tracking-widest uppercase text-on-surface-variant hover:text-on-background pb-2 px-2 transition-all">Négociations</button>
-			<button data-filter="Juridique" class="filter-btn font-headline font-bold text-sm tracking-widest uppercase text-on-surface-variant hover:text-on-background pb-2 px-2 transition-all">Juridique</button>
-			<button data-filter="Grèves & Mouvements" class="filter-btn font-headline font-bold text-sm tracking-widest uppercase text-on-surface-variant hover:text-on-background pb-2 px-2 transition-all">Grèves & Mouvements</button>
-		</div>
-
-		<!-- The Editorial Feed -->
-		<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 gap-y-16" id="articles-grid">
-			{sortedArticles.map((article) => (
-				<article 
-                    data-category={article.data.category}
-                    class="article-card group bg-surface-container-lowest flex flex-col h-full rounded-sm overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500"
-                >
-					<div class="relative h-64 overflow-hidden">
-						<img 
-                            src={article.data.image || 'https://images.unsplash.com/photo-1541888086425-d81bb19240f5?q=80&w=2070&auto=format&fit=crop'} 
-                            alt={article.data.title} 
-                            class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
-                        />
-						<div class={`absolute top-4 left-4 font-headline font-bold text-[10px] px-3 py-1 uppercase tracking-widest rounded-[2px] shadow-sm ${getBadgeClass(article.data.category)}`}>
-							{article.data.category}
-						</div>
-					</div>
-					<div class="p-8 flex flex-col flex-grow">
-						<div class="font-body text-xs text-on-surface-variant font-bold tracking-widest uppercase mb-4">
-                            {new Date(article.data.date).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}
-                        </div>
-						<h3 class="font-headline font-black text-2xl tracking-tight leading-tight mb-4 group-hover:text-primary transition-colors">
-							{article.data.title}
-						</h3>
-						<p class="font-body text-sm text-on-surface-variant leading-relaxed mb-8 flex-grow">
-							{article.data.summary}
-						</p>
-						<a href={`/activites/${article.id}`} class="inline-flex items-center gap-2 font-headline font-bold text-[11px] text-on-background uppercase tracking-widest border-b border-on-background pb-1 w-fit group-hover:text-primary group-hover:border-primary transition-colors">
-							Lire l'article complet <span class="material-symbols-outlined text-sm">arrow_forward</span>
-						</a>
-					</div>
-				</article>
-			))}
-
-			<!-- Newsletter / Engage Card (Always visible) -->
-			<div class="signature-gradient text-on-primary p-8 md:p-12 rounded-sm shadow-xl flex flex-col justify-center items-start h-full">
-				 <span class="material-symbols-outlined text-6xl mb-6 text-on-primary" style="font-variation-settings: 'FILL' 1;">mail</span>
-				 <h3 class="font-headline font-black text-3xl tracking-tight leading-none mb-4">Ne manquez aucune action.</h3>
-				 <p class="font-body text-sm text-on-primary/90 mb-8 max-w-sm">Abonnez-vous à notre lettre d'information pour suivre nos luttes locales.</p>
-				 <form class="w-full relative">
-					 <input type="email" placeholder="Votre email" class="w-full bg-white/10 border border-white/20 text-white placeholder-white/50 rounded-sm font-body px-4 py-4 text-sm focus:ring-2 focus:ring-white focus:outline-none backdrop-blur-sm" required>
-					 <button type="submit" class="absolute right-2 top-2 bottom-2 bg-on-primary text-primary font-headline font-bold text-[10px] tracking-widest uppercase px-4 rounded-[2px] hover:bg-surface-dim transition-colors">
-						 S'inscrire
-					 </button>
-				 </form>
-			</div>
-		</section>
-
-		<!-- Empty State -->
-        <div id="empty-state" class="hidden text-center py-20">
-            <p class="font-body text-on-surface-variant italic">Il n'y a pas encore d'actualités dans cette catégorie.</p>
+        <!-- Filter Bar -->
+        <div class="sticky top-16 z-30 bg-surface/80 backdrop-blur-md border-b border-outline-variant/10">
+            <div class="max-w-7xl mx-auto px-8 overflow-x-auto no-scrollbar py-4 flex gap-8 items-center">
+                <span class="font-headline font-bold text-[9px] uppercase tracking-widest text-on-surface-variant/50 shrink-0">Filtrer par :</span>
+                {categories.map(cat => (
+                    <button 
+                        class:list={[
+                            "px-4 py-2 font-headline font-bold text-[10px] uppercase tracking-widest transition-all hover:text-primary whitespace-nowrap filter-btn",
+                            cat === "Toutes" ? "text-primary border-b-2 border-primary" : "text-on-surface-variant"
+                        ]}
+                        data-category={cat}
+                    >
+                        {cat}
+                    </button>
+                ))}
+            </div>
         </div>
-	</main>
 
-	<!-- Unified Bottom CTA -->
-	<section class="max-w-7xl mx-auto px-6 py-24 mb-12">
-		<div class="signature-gradient p-12 md:p-24 rounded-sm relative overflow-hidden text-center group">
-			<div class="relative z-10 flex flex-col items-center">
-				<h2 class="text-4xl md:text-6xl font-black font-headline tracking-tighter text-white mb-6">
-					PLUS FORTS, ENSEMBLE.
-				</h2>
-				<p class="text-white/90 font-body text-base md:text-lg max-w-xl mx-auto mb-10">
-					La défense de vos droits ne se fera pas sans vous. Rejoignez l'UDTL 31.
-				</p>
-				<a href="/adhesion" class="inline-flex items-center justify-center bg-white text-primary px-8 py-5 rounded-sm font-headline font-black text-sm tracking-widest uppercase hover:bg-surface-container-lowest transition-colors shadow-2xl hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] transform hover:-translate-y-1">
-					Adhérer maintenant
-				</a>
-			</div>
-		</div>
-	</section>
+        <!-- Grid -->
+        <Section background="surface" class="py-24 min-h-[60vh]">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12" id="articles-grid">
+                {sortedArticles.map(article => (
+                    <div class="article-card group" data-cat={article.data.category}>
+                        <Card surface="low" border={true} class="h-full flex flex-col p-0 overflow-hidden hover:translate-y-[-8px] transition-all duration-500">
+                            <div class="aspect-video relative overflow-hidden bg-on-background/5">
+                                <img 
+                                    src={article.data.image || 'https://images.unsplash.com/photo-1541888941259-7b9f9227feae?q=80&w=2070&auto=format&fit=crop'} 
+                                    alt={article.data.title}
+                                    class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 hover:scale-110"
+                                />
+                                <div class="absolute top-4 right-4 bg-primary text-on-primary px-3 py-1 font-headline font-bold text-[9px] uppercase tracking-widest">
+                                    {article.data.category}
+                                </div>
+                            </div>
+                            <div class="p-8 flex flex-col flex-grow">
+                                <span class="font-body text-[10px] font-bold text-on-surface-variant/40 uppercase mb-4 tracking-tighter">
+                                     {new Date(article.data.date).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}
+                                </span>
+                                <h3 class="text-2xl font-black font-headline tracking-tighter leading-tight mb-4 group-hover:text-primary transition-colors">
+                                    {article.data.title}
+                                </h3>
+                                <p class="text-sm font-body text-on-surface-variant leading-relaxed mb-10 flex-grow opacity-80">
+                                    {article.data.summary}
+                                </p>
+                                <Button variant="tertiary" class="p-0 text-[10px] w-fit border-b border-on-background/20 group-hover:border-primary" onclick={`location.href='/activites/${article.id}'`}>
+                                    LIRE L'ARTICLE 
+                                    <span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">trending_flat</span>
+                                </Button>
+                            </div>
+                        </Card>
+                    </div>
+                ))}
+            </div>
 
-    <script is:inline>
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const articleCards = document.querySelectorAll('.article-card');
-        const emptyState = document.getElementById('empty-state');
+            <!-- Empty State -->
+            <div id="empty-state" class="hidden text-center py-40 animate-in fade-in zoom-in duration-300">
+                <span class="material-symbols-outlined text-8xl text-on-background/10 mb-8">tab_unselected</span>
+                <p class="font-headline font-bold text-lg text-on-surface-variant italic">Aucun article trouvé dans cette catégorie.</p>
+            </div>
+        </Section>
+    </main>
 
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const filter = btn.getAttribute('data-filter');
-                
-                // Update active state of buttons
-                filterBtns.forEach(b => {
-                    b.classList.remove('border-b-2', 'border-primary', 'text-primary');
-                    b.classList.add('text-on-surface-variant');
-                });
-                btn.classList.add('border-b-2', 'border-primary', 'text-primary');
-                btn.classList.remove('text-on-surface-variant');
+    <Footer slot="footer" />
+</MainLayout>
 
-                // Filter cards
-                let visibleCount = 0;
-                articleCards.forEach(card => {
-                    const category = card.getAttribute('data-category');
-                    if (filter === 'all' || category === filter) {
-                        card.style.display = 'flex';
-                        // Small animation
-                        card.classList.add('opacity-100', 'translate-y-0');
-                        visibleCount++;
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
+<script is:inline>
+    const btns = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.article-card');
+    const grid = document.getElementById('articles-grid');
+    const empty = document.getElementById('empty-state');
 
-                // Handle empty state
-                if (visibleCount === 0) {
-                    emptyState.classList.remove('hidden');
+    btns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const cat = btn.getAttribute('data-category');
+            
+            // UI Update
+            btns.forEach(b => b.classList.remove('text-primary', 'border-b-2', 'border-primary'));
+            btn.classList.add('text-primary', 'border-b-2', 'border-primary');
+
+            // Filtering
+            let visible = 0;
+            cards.forEach(card => {
+                const cardCat = card.getAttribute('data-cat');
+                if(cat === "Toutes" || cardCat === cat) {
+                    card.style.display = 'block';
+                    visible++;
                 } else {
-                    emptyState.classList.add('hidden');
+                    card.style.display = 'none';
                 }
             });
+
+            // Empty state
+            if(visible === 0) {
+                grid.classList.add('hidden');
+                empty.classList.remove('hidden');
+            } else {
+                grid.classList.remove('hidden');
+                empty.classList.add('hidden');
+            }
         });
-    </script>
-</Layout>
+    });
+</script>

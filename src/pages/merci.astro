@@ -1,33 +1,37 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import MainLayout from '../layouts/MainLayout.astro';
+import Nav from '../components/ui/Nav.astro';
+import Footer from '../components/ui/Footer.astro';
+import Button from '../components/ui/Button.astro';
+import Section from '../components/ui/Section.astro';
 ---
 
-<Layout title="Merci pour votre adhésion - UDTL 31">
-	<main class="min-h-screen pt-32 flex items-center justify-center bg-surface-container-low px-8">
-        <div class="max-w-2xl w-full text-center">
-            <div class="inline-flex items-center justify-center w-24 h-24 bg-primary text-on-primary rounded-full mb-8 custom-shadow animate-bounce">
-                <span class="material-symbols-outlined text-5xl">check_circle</span>
+<MainLayout title="Merci">
+    <Nav slot="nav" />
+    
+    <main class="pt-32 min-h-[70vh] flex items-center">
+        <Section background="surface" class="text-center">
+            <div class="max-w-2xl mx-auto space-y-12">
+                <div class="inline-flex items-center justify-center w-24 h-24 rounded-full bg-primary/10 text-primary mb-8 animate-bounce">
+                    <span class="material-symbols-outlined text-5xl">check_circle</span>
+                </div>
+                
+                <h1 class="text-5xl md:text-7xl font-black font-headline tracking-tighter leading-none text-on-background">
+                    MERCI POUR VOTRE <br/> <span class="signature-gradient text-transparent bg-clip-text">ENGAGEMENT.</span>
+                </h1>
+                
+                <p class="text-xl font-body text-on-surface-variant leading-relaxed px-4">
+                    Votre demande d'adhésion a été transmise avec succès à l'UDTL 31. Un délégué départemental prendra contact avec vous très prochainement.
+                </p>
+                
+                <div class="pt-10">
+                    <Button variant="primary" class="px-12" onclick="location.href='/'">
+                        RETOUR À L'ACCUEIL
+                    </Button>
+                </div>
             </div>
-            
-            <div class="flex items-center justify-center gap-2 mb-6">
-                <div class="h-px w-8 bg-primary"></div>
-                <span class="text-primary font-headline font-bold tracking-widest uppercase text-xs">ADHÉSION ENREGISTRÉE</span>
-                <div class="h-px w-8 bg-primary"></div>
-            </div>
+        </Section>
+    </main>
 
-            <h1 class="text-5xl md:text-7xl font-black font-headline tracking-tighter leading-[0.9] text-on-background mb-8">
-                BIENVENUE DANS<br/>
-                <span class="signature-gradient text-transparent bg-clip-text italic uppercase">LA FORTERESSE.</span>
-            </h1>
-
-            <p class="text-xl font-body text-on-surface-variant mb-12 leading-relaxed">
-                Votre demande d'adhésion pour 2025 a bien été transmise à nos délégués départementaux. Vous recevrez un e-mail de confirmation avec votre bulletin d'adhésion sous 24h.
-            </p>
-
-            <a href="/" class="inline-flex items-center gap-4 bg-on-background text-background py-5 px-10 font-headline uppercase font-black text-[13px] tracking-widest hover:bg-primary transition-colors rounded-sm group">
-                Retour à l'accueil
-                <span class="material-symbols-outlined text-[20px] transform group-hover:-translate-x-1 transition-transform">home</span>
-            </a>
-        </div>
-	</main>
-</Layout>
+    <Footer slot="footer" />
+</MainLayout>

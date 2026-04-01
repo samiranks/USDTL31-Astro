@@ -1,0 +1,41 @@
+---
+interface Props {
+  surface?: 'lowest' | 'low' | 'high' | 'highest';
+  class?: string;
+  overlap?: boolean;
+  border?: boolean;
+  id?: string;
+}
+
+const { 
+  surface = 'lowest', 
+  class: className = '', 
+  overlap = false, 
+  border = false,
+  id
+} = Astro.props;
+
+const surfaces = {
+  lowest: 'bg-surface-container-lowest',
+  low: 'bg-surface-container-low',
+  high: 'bg-surface-container-high',
+  highest: 'bg-surface-container-highest'
+};
+
+const baseClasses = "relative p-8 rounded-sm transition-colors duration-300 custom-shadow";
+---
+
+<div 
+  class:list={[
+    baseClasses, 
+    surfaces[surface], 
+    overlap ? "-mx-4 md:-mx-8" : "", 
+    className
+  ]} 
+  id={id}
+>
+  {border && (
+    <div class="absolute -inset-2 border border-outline-variant/15 pointer-events-none -z-10 bg-transparent"></div>
+  )}
+  <slot />
+</div>

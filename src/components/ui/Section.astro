@@ -1,0 +1,36 @@
+---
+interface Props {
+  background?: 'surface' | 'low' | 'high' | 'signature';
+  class?: string;
+  id?: string;
+  bleed?: boolean;
+}
+
+const { 
+  background = 'surface', 
+  class: className = '', 
+  id,
+  bleed = false
+} = Astro.props;
+
+const backgrounds = {
+  surface: 'bg-surface',
+  low: 'bg-surface-container-low',
+  high: 'bg-surface-container-high',
+  signature: 'signature-gradient text-on-primary'
+};
+---
+
+<section 
+  id={id} 
+  class:list={[
+    backgrounds[background], 
+    bleed ? "" : "px-8", 
+    "py-24 relative overflow-hidden", 
+    className
+  ]}
+>
+  <div class:list={[bleed ? "" : "max-w-7xl mx-auto"]}>
+    <slot />
+  </div>
+</section>

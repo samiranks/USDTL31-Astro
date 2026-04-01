@@ -5,7 +5,7 @@ import Layout from '../layouts/Layout.astro';
 <Layout title="Adhésion - UDTL 31">
 	<main class="pt-24">
 		<!-- Hero Section -->
-		<section class="relative h-[720px] flex items-center overflow-hidden bg-surface-container-low">
+		<section class="relative h-[650px] flex items-center overflow-hidden bg-surface-container-low">
 			<div class="absolute inset-0 z-0">
 				<img class="w-full h-full object-cover opacity-90" alt="Flotte de camions alignés" src="https://images.unsplash.com/photo-1519003722824-194d4455a60c?q=80&w=2075&auto=format&fit=crop"/>
 				<div class="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-transparent"></div>
@@ -15,201 +15,244 @@ import Layout from '../layouts/Layout.astro';
 				<div class="max-w-3xl">
 					<div class="flex items-center gap-2 mb-6">
 						<div class="h-px w-8 bg-primary"></div>
-						<span class="text-primary font-headline font-bold tracking-widest uppercase text-xs">FORCE OUVRIÈRE HAUTE-GARONNE</span>
+						<span class="text-primary font-headline font-bold tracking-widest uppercase text-xs">REJOINDRE LA FORCE</span>
 					</div>
 					<h1 class="text-6xl md:text-8xl font-black font-headline tracking-tighter leading-[0.9] text-on-background mb-8">
 						VOTRE FORCE,<br/>
-						<span class="text-primary">NOTRE UNION.</span>
+						<span class="signature-gradient text-transparent bg-clip-text">NOTRE UNION.</span>
 					</h1>
 					<p class="text-xl font-body text-on-surface-variant max-w-xl mb-10 leading-relaxed">
-						Rejoignez l'UDTL 31 pour transformer l'isolement en action collective. Ensemble, nous bâtissons la forteresse de vos droits dans la Haute-Garonne.
+						Adhérer à l'UDTL 31, c'est construire ensemble la forteresse de vos droits dans la branche transport et logistique de la Haute-Garonne.
 					</p>
-					<div class="flex flex-wrap gap-4">
-						<button class="signature-gradient text-on-primary px-8 py-4 rounded-sm font-headline font-extrabold text-[15px] flex items-center gap-3 hover:opacity-90 transition-all uppercase tracking-tight">
-							Adhérer maintenant
-							<span class="material-symbols-outlined">arrow_forward</span>
-						</button>
-						<button class="bg-surface-container-lowest/10 border border-outline text-on-background backdrop-blur-sm px-8 py-4 rounded-sm font-headline font-bold text-[15px] hover:bg-surface-container-low transition-all uppercase tracking-tight">
-							Découvrir vos avantages
-						</button>
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<!-- Pourquoi nous rejoindre (Grid Section) -->
-		<section class="max-w-7xl mx-auto px-8 py-24">
-			<h2 class="text-4xl font-black font-headline tracking-tighter mb-4"><span class="border-b-[4px] border-primary pb-1">Pour</span>quoi nous rejoindre ?</h2>
-			<div class="h-8"></div>
-			
-			<div class="grid grid-cols-1 md:grid-cols-12 gap-8 mb-8">
-				<!-- Protection Juridique -->
-				<div class="md:col-span-8 bg-surface-container-lowest border-l-4 border-primary p-12 relative custom-shadow overflow-hidden">
-					<span class="material-symbols-outlined text-primary text-3xl mb-4" style="font-variation-settings: 'FILL' 1;">gavel</span>
-					<h3 class="text-3xl font-black font-headline uppercase tracking-tight mb-4">Protection Juridique Dédiée</h3>
-					<p class="font-body text-on-surface-variant text-lg leading-relaxed max-w-lg mb-4">
-						Accédez à nos experts en droit du travail pour chaque étape de votre carrière. Conseil, médiation et assistance juridique complète pour garantir vos droits face aux enjeux contractuels.
-					</p>
-					<!-- Giant ghost shield -->
-					<div class="absolute -right-8 -bottom-12 opacity-[0.03] pointer-events-none">
-						<span class="material-symbols-outlined" style="font-size: 300px; font-variation-settings: 'FILL' 1;">shield</span>
-					</div>
-				</div>
-
-				<!-- Solidarite -->
-				<div class="md:col-span-4 signature-gradient p-10 flex flex-col justify-between text-on-primary rounded-sm">
-					<div>
-						<span class="material-symbols-outlined text-on-primary text-4xl mb-4" style="font-variation-settings: 'FILL' 1;">groups</span>
-						<h3 class="text-2xl font-black font-headline uppercase tracking-tight mb-4">Solidarité<br/>Régionale</h3>
-						<p class="font-body text-sm leading-relaxed opacity-90 mb-8">
-							Intégrez un réseau puissant au cœur de la Haute-Garonne. Une communauté active prête à soutenir chaque membre dans ses luttes et ses projets.
-						</p>
-					</div>
-					<div>
-					   <div class="h-px bg-white/20 mb-4 w-full"></div>
-					   <span class="font-headline font-bold text-[10px] tracking-widest uppercase">Union Départementale 31</span>
-					</div>
-				</div>
-			</div>
-
-			<div class="grid grid-cols-1 md:grid-cols-12 gap-8">
-				<!-- Négociation -->
-				<div class="md:col-span-4 bg-inverse-surface text-inverse-on-surface p-10 flex flex-col justify-center rounded-sm relative overflow-hidden">
-					<span class="material-symbols-outlined text-primary text-3xl mb-4" style="font-variation-settings: 'FILL' 1;">handshake</span>
-					<h3 class="text-2xl font-black font-headline uppercase tracking-tight mb-4 text-white">Négociation<br/>Collective</h3>
-					<p class="font-body text-sm text-surface-dim leading-relaxed">
-						Nous portons votre voix lors des accords d'entreprise et de branche pour améliorer vos conditions de travail et de rémunération.
-					</p>
-					<div class="absolute -right-4 -bottom-4 opacity-10 pointer-events-none">
-						<span class="material-symbols-outlined" style="font-size: 140px; font-variation-settings: 'FILL' 1;">handshake</span>
-					</div>
-				</div>
-
-				<!-- Formations -->
-				<div class="md:col-span-8 bg-surface-container-high p-10 flex items-center justify-between rounded-sm relative overflow-hidden">
-					<div class="max-w-md relative z-10">
-						<h3 class="text-2xl font-black font-headline uppercase tracking-tight mb-4">Formations Syndicales</h3>
-						<p class="font-body text-on-surface-variant leading-relaxed">
-							Maîtrisez les outils du dialogue social. Nous proposons des modules de formation exclusifs pour devenir un acteur clé au sein de votre entreprise.
-						</p>
-					</div>
-					<div class="absolute right-0 top-0 bottom-0 w-1/3 bg-cover bg-center hidden md:block" style="background-image: url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2070&auto=format&fit=crop'); clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%); mix-blend-mode: multiply; filter: grayscale(100%);">
-					</div>
 				</div>
 			</div>
 		</section>
 
 		<!-- Form Section -->
-		<section class="bg-surface relative py-24 mb-12">
-			<!-- Visual split background -->
+		<section class="bg-surface relative py-24 mb-12" id="form-scroll">
 			<div class="absolute inset-0 z-0 flex">
 				<div class="w-1/2 h-full bg-surface-container-low"></div>
 				<div class="w-1/2 h-full bg-surface"></div>
 			</div>
 			
 			<div class="max-w-7xl mx-auto px-8 relative z-10 flex flex-col md:flex-row gap-16">
-				<!-- Left: Formulaire -->
+				<!-- Left: The Interactive Form -->
 				<div class="w-full md:w-1/2">
-					<div class="bg-surface-container-lowest p-12 custom-shadow relative rounded-[2px]" style="box-shadow: 0 40px 80px rgba(94, 63, 59, 0.08);">
-						<!-- Decorative pink outline -->
+					<div class="bg-surface-container-lowest p-12 custom-shadow relative rounded-sm">
+						<!-- Decorative outline as per design system -->
 						<div class="absolute -inset-4 border border-outline-variant/30 pointer-events-none -z-10"></div>
 						
-						<h3 class="text-3xl font-black font-headline mb-4 uppercase tracking-tighter">Formulaire d'adhésion</h3>
-						<p class="font-body text-on-surface-variant text-sm mb-10 leading-relaxed">
-							Rejoignez-nous en 3 étapes simples. Vos informations sont protégées et confidentielles.
+						<h3 class="text-3xl font-black font-headline mb-4 uppercase tracking-tighter">Adhésion 2025</h3>
+						<p class="font-body text-on-surface-variant text-sm mb-10 leading-relaxed max-w-sm">
+							Rejoignez l'UDTL 31 en quelques minutes. Vos données sont cryptées et strictement confidentielles.
 						</p>
 
-						<!-- Steps -->
-						<div class="flex items-center justify-between mb-10">
-							<div class="flex items-center gap-2">
-								<div class="w-6 h-6 bg-primary text-on-primary flex items-center justify-center font-headline font-bold text-xs">1</div>
-								<span class="font-headline font-bold text-[10px] tracking-widest uppercase text-primary">Identité</span>
+						<!-- Improved Step Indicators -->
+						<div class="flex items-center justify-between mb-12">
+							<div class="flex flex-col items-center gap-2" id="indicator-1">
+								<div class="w-8 h-8 bg-primary text-on-primary flex items-center justify-center font-headline font-bold rounded-sm transition-all duration-300">1</div>
+								<span class="font-headline font-bold text-[9px] tracking-widest uppercase text-primary">Identité</span>
 							</div>
-							<div class="h-px w-12 bg-surface-container-high"></div>
-							<div class="flex items-center gap-2">
-								<div class="w-6 h-6 bg-surface-container-high text-on-surface-variant flex items-center justify-center font-headline font-bold text-xs">2</div>
-								<span class="font-headline font-bold text-[10px] tracking-widest uppercase text-on-surface-variant">Profession</span>
+							<div class="h-px flex-grow mx-4 bg-surface-container-high relative overflow-hidden">
+                                <div class="absolute inset-0 bg-primary translate-x-[-100%] transition-transform duration-500" id="progress-1"></div>
+                            </div>
+							<div class="flex flex-col items-center gap-2 opacity-30 transition-all duration-300" id="indicator-2">
+								<div class="w-8 h-8 bg-surface-container-high text-on-surface-variant flex items-center justify-center font-headline font-bold rounded-sm">2</div>
+								<span class="font-headline font-bold text-[9px] tracking-widest uppercase">Profession</span>
 							</div>
-							<div class="h-px w-12 bg-surface-container-high"></div>
-							<div class="flex items-center gap-2">
-								<div class="w-6 h-6 bg-surface-container-high text-on-surface-variant flex items-center justify-center font-headline font-bold text-xs">3</div>
-								<span class="font-headline font-bold text-[10px] tracking-widest uppercase text-on-surface-variant">Cotisation</span>
+							<div class="h-px flex-grow mx-4 bg-surface-container-high relative overflow-hidden">
+                                <div class="absolute inset-0 bg-primary translate-x-[-100%] transition-transform duration-500" id="progress-2"></div>
+                            </div>
+							<div class="flex flex-col items-center gap-2 opacity-30 transition-all duration-300" id="indicator-3">
+								<div class="w-8 h-8 bg-surface-container-high text-on-surface-variant flex items-center justify-center font-headline font-bold rounded-sm">3</div>
+								<span class="font-headline font-bold text-[9px] tracking-widest uppercase">Cotisation</span>
 							</div>
 						</div>
 
-						<form class="space-y-6">
-							<div class="grid grid-cols-2 gap-6">
-								<div>
-									<label class="block font-headline font-bold text-[10px] uppercase tracking-widest text-on-surface-variant mb-2">Nom</label>
-									<input type="text" class="w-full bg-surface-container-low border-none border-b-2 border-outline/50 focus:border-primary focus:ring-0 font-body py-3 px-4 transition-colors" placeholder="Votre nom">
+						<!-- Form Starts Here -->
+						<form name="adhesion-2025" method="POST" data-netlify="true" class="space-y-8" id="membership-form">
+                            <!-- Netlify Hidden Field -->
+                            <input type="hidden" name="form-name" value="adhesion-2025" />
+
+							<!-- STEP 1: IDENTITY -->
+							<div id="step-1-content" class="space-y-6 transition-all duration-500">
+								<div class="grid grid-cols-2 gap-6">
+									<div>
+										<label class="block font-headline font-bold text-[10px] uppercase tracking-widest text-on-surface-variant mb-2">Nom de famille</label>
+										<input type="text" name="nom" required class="w-full bg-surface-container-low border-none border-b-2 border-outline/30 focus:border-primary focus:ring-0 font-body py-4 px-4 transition-all" placeholder="DURAND">
+									</div>
+									<div>
+										<label class="block font-headline font-bold text-[10px] uppercase tracking-widest text-on-surface-variant mb-2">Prénom</label>
+										<input type="text" name="prenom" required class="w-full bg-surface-container-low border-none border-b-2 border-outline/30 focus:border-primary focus:ring-0 font-body py-4 px-4 transition-all" placeholder="Jean">
+									</div>
 								</div>
 								<div>
-									<label class="block font-headline font-bold text-[10px] uppercase tracking-widest text-on-surface-variant mb-2">Prénom</label>
-									<input type="text" class="w-full bg-surface-container-low border-none border-b-2 border-outline/50 focus:border-primary focus:ring-0 font-body py-3 px-4 transition-colors" placeholder="Votre prénom">
+									<label class="block font-headline font-bold text-[10px] uppercase tracking-widest text-on-surface-variant mb-2">E-mail personnel</label>
+									<input type="email" name="email" required class="w-full bg-surface-container-low border-none border-b-2 border-outline/30 focus:border-primary focus:ring-0 font-body py-4 px-4 transition-all" placeholder="jean.durand@email.fr">
 								</div>
+								<div>
+									<label class="block font-headline font-bold text-[10px] uppercase tracking-widest text-on-surface-variant mb-2">Téléphone</label>
+									<input type="tel" name="tel" required class="w-full bg-surface-container-low border-none border-b-2 border-outline/30 focus:border-primary focus:ring-0 font-body py-4 px-4 transition-all" placeholder="06 00 00 00 00">
+								</div>
+								
+								<button type="button" onclick="nextStep(2)" class="w-full bg-on-background text-background py-5 font-headline uppercase font-bold text-[13px] tracking-widest hover:bg-primary transition-colors rounded-sm flex items-center justify-center gap-2 group">
+									Continuer vers l'entreprise
+									<span class="material-symbols-outlined text-[18px] transform group-hover:translate-x-1 transition-transform">arrow_forward</span>
+								</button>
 							</div>
-							<div>
-								<label class="block font-headline font-bold text-[10px] uppercase tracking-widest text-on-surface-variant mb-2">Adresse E-mail</label>
-								<input type="email" class="w-full bg-surface-container-low border-none border-b-2 border-outline/50 focus:border-primary focus:ring-0 font-body py-3 px-4 transition-colors" placeholder="email@exemple.com">
+
+							<!-- STEP 2: PROFESSION -->
+							<div id="step-2-content" class="hidden space-y-6 transition-all duration-500 opacity-0 translate-y-4">
+								<div>
+									<label class="block font-headline font-bold text-[10px] uppercase tracking-widest text-on-surface-variant mb-2">Entreprise / Société</label>
+									<input type="text" name="entreprise" class="w-full bg-surface-container-low border-none border-b-2 border-outline/30 focus:border-primary focus:ring-0 font-body py-4 px-4 transition-all" placeholder="Ex: Transports 31">
+								</div>
+								<div>
+									<label class="block font-headline font-bold text-[10px] uppercase tracking-widest text-on-surface-variant mb-2">Fonction / Poste</label>
+									<input type="text" name="poste" class="w-full bg-surface-container-low border-none border-b-2 border-outline/30 focus:border-primary focus:ring-0 font-body py-4 px-4 transition-all" placeholder="Ex: Chauffeur-Livreur">
+								</div>
+                                <div>
+									<label class="block font-headline font-bold text-[10px] uppercase tracking-widest text-on-surface-variant mb-2">Type de contrat</label>
+									<select name="contrat" class="w-full bg-surface-container-low border-none border-b-2 border-outline/30 focus:border-primary focus:ring-0 font-body py-4 px-4 transition-all appearance-none">
+                                        <option value="CDI">CDI</option>
+                                        <option value="CDD">CDD</option>
+                                        <option value="Interim">Intérim</option>
+                                        <option value="Apprenti">Apprenti / Stagiaire</option>
+                                    </select>
+								</div>
+								
+                                <div class="flex gap-4">
+								    <button type="button" onclick="prevStep(1)" class="w-1/3 border border-outline/30 text-on-surface-variant py-5 font-headline uppercase font-bold text-[11px] tracking-widest hover:bg-surface-container-high transition-colors rounded-sm">
+									    Retour
+								    </button>
+								    <button type="button" onclick="nextStep(3)" class="flex-grow bg-on-background text-background py-5 font-headline uppercase font-bold text-[13px] tracking-widest hover:bg-primary transition-colors rounded-sm flex items-center justify-center gap-2 group">
+									    Valider la profession
+									    <span class="material-symbols-outlined text-[18px] transform group-hover:translate-x-1 transition-transform">arrow_forward</span>
+								    </button>
+                                </div>
 							</div>
-							<div>
-								<label class="block font-headline font-bold text-[10px] uppercase tracking-widest text-on-surface-variant mb-2">Téléphone</label>
-								<input type="tel" class="w-full bg-surface-container-low border-none border-b-2 border-outline/50 focus:border-primary focus:ring-0 font-body py-3 px-4 transition-colors" placeholder="06 00 00 00 00">
+
+							<!-- STEP 3: COTISATION -->
+							<div id="step-3-content" class="hidden space-y-6 transition-all duration-500 opacity-0 translate-y-4">
+								<div class="bg-surface-container-low p-6 border-l-4 border-primary">
+                                    <p class="font-body text-sm text-on-surface-variant leading-relaxed mb-4">
+                                        Pour valider votre adhésion, vous devez choisir votre rythme de cotisation. Le prélèvement automatique est sécurisé.
+                                    </p>
+                                    <div class="space-y-3">
+                                        <label class="flex items-center gap-3 cursor-pointer group">
+                                            <input type="radio" name="cotisation" value="mensuel" checked class="text-primary focus:ring-primary w-4 h-4">
+                                            <span class="font-body text-sm font-semibold group-hover:text-primary transition-colors">Cotisation Mensuelle</span>
+                                        </label>
+                                        <label class="flex items-center gap-3 cursor-pointer group">
+                                            <input type="radio" name="cotisation" value="annuel" class="text-primary focus:ring-primary w-4 h-4">
+                                            <span class="font-body text-sm font-semibold group-hover:text-primary transition-colors">Cotisation Annuelle (-5%)</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-center gap-2 p-2 text-[10px] font-body text-on-surface-variant/70 italic">
+                                    <span class="material-symbols-outlined text-sm">security</span>
+                                    Envoi des documents par voie électronique après validation.
+                                </div>
+								
+                                <div class="flex gap-4">
+								    <button type="button" onclick="prevStep(2)" class="w-1/3 border border-outline/30 text-on-surface-variant py-5 font-headline uppercase font-bold text-[11px] tracking-widest hover:bg-surface-container-high transition-colors rounded-sm">
+									    Retour
+								    </button>
+								    <button type="submit" class="flex-grow signature-gradient text-on-primary py-5 font-headline uppercase font-black text-[15px] tracking-[0.1em] hover:opacity-90 active:scale-95 transition-all rounded-sm flex items-center justify-center gap-2">
+									    Finaliser mon adhésion
+									    <span class="material-symbols-outlined text-[20px]">verified_user</span>
+								    </button>
+                                </div>
 							</div>
-							
-							<button type="button" class="w-full bg-inverse-surface text-inverse-on-surface py-4 font-headline uppercase font-bold text-[13px] tracking-widest mt-6 hover:opacity-90 active:scale-[0.98] transition-all rounded-sm flex items-center justify-center gap-2">
-								Continuer vers l'étape suivante
-								<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
-							</button>
 						</form>
 					</div>
 				</div>
 
 				<!-- Right: Info -->
-				<div class="w-full md:w-1/2 flex flex-col justify-center pl-0 md:pl-10">
-					<h3 class="text-2xl font-black font-headline uppercase tracking-tight mb-4 border-l-4 border-primary pl-4">Vos données sont sacrées</h3>
-					<p class="font-body text-on-surface-variant leading-relaxed mb-10 text-sm">
-						Conformément à nos valeurs de discrétion et de respect, votre adhésion est strictement confidentielle. Votre employeur n'en sera jamais informé par nos soins.
-					</p>
+				<div class="w-full md:w-1/2 flex flex-col justify-center pl-0 md:pl-10 space-y-12">
+					<div>
+                        <h3 class="text-2xl font-black font-headline uppercase tracking-tight mb-4 border-l-4 border-primary pl-4">Indépendance & Solidarité</h3>
+                        <p class="font-body text-on-surface-variant leading-relaxed text-sm max-w-sm">
+                            En rejoignant l'UDTL 31, vous rejoignez un syndicat libre qui ne dépend d'aucun parti.
+                        </p>
+                    </div>
 
-					<div class="bg-surface-container-high p-6 rounded-sm mb-8 border-l-2 border-outline-variant/50">
-						<h4 class="font-headline font-bold text-sm mb-2 text-on-background">Besoin d'aide ?</h4>
-						<p class="font-body text-on-surface-variant text-xs mb-4">Nos délégués sont à votre écoute pour vous accompagner dans votre démarche.</p>
-						<div class="flex items-center gap-2 font-headline font-bold text-primary">
-							<span class="material-symbols-outlined text-sm">call</span>
+					<div class="bg-surface-container-high p-8 rounded-sm custom-shadow relative overflow-hidden">
+						<h4 class="font-headline font-bold text-sm mb-4 text-on-background flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary">contact_support</span>
+                            Besoin d'aide ?
+                        </h4>
+						<p class="font-body text-on-surface-variant text-xs mb-6 leading-relaxed">Nos délégués sont disponibles par téléphone.</p>
+						<a href="tel:0561000000" class="inline-flex items-center gap-3 font-headline font-black text-xl text-primary hover:scale-105 transition-transform">
 							05 61 00 00 00
-						</div>
-					</div>
-
-					<div class="flex items-center gap-6 p-4 bg-surface-container-lowest border border-outline-variant/30 rounded-[2px] custom-shadow">
-						<div class="w-20 h-20 bg-surface-container-high rounded-full overflow-hidden border-2 border-white shadow-xl relative opacity-80 mix-blend-luminosity">
-						   <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover grayscale opacity-50"/>
-						   <div class="absolute inset-0 flex items-center justify-center">
-							  <span class="material-symbols-outlined text-outline">map</span>
-						   </div>
-						</div>
-						<div>
-							<h4 class="font-headline font-black text-sm uppercase mb-1">UDTL 31</h4>
-							<p class="font-body text-xs text-on-surface-variant">93 boulevard de Suisse<br/>31200 Toulouse</p>
-						</div>
+						</a>
 					</div>
 				</div>
 			</div>
 		</section>
 
-		<!-- Bottom Giant text Block -->
+		<!-- Bottom Giant text -->
 		<section class="signature-gradient py-24 relative overflow-hidden text-center flex flex-col items-center justify-center px-8">
-			 <div class="absolute inset-0 flex items-center justify-center opacity-10 pointer-events-none mix-blend-overlay">
-				<span class="font-black font-headline text-[20vw] whitespace-nowrap leading-none tracking-tighter" style="color: #410002;">FORCE<br/>OUVRIÈRE</span>
+             <div class="absolute inset-0 flex items-center justify-center opacity-10 pointer-events-none mix-blend-overlay">
+				<span class="font-black font-headline text-[15vw] whitespace-nowrap leading-none tracking-tighter" style="color: #410002;">FORCE OUVRIÈRE</span>
 			</div>
-			<div class="relative z-10">
-			   <h2 class="text-4xl md:text-5xl lg:text-6xl font-black font-headline text-white italic uppercase tracking-tighter leading-tight max-w-4xl mb-12" style="text-shadow: 0 4px 20px rgba(0,0,0,0.1);">
-				   "LA FORCE DU COLLECTIF, LA LIBERTÉ DE L'INDIVIDU."
+			<div class="relative z-10 max-w-4xl">
+			   <h2 class="text-4xl md:text-5xl lg:text-7xl font-black font-headline text-white italic uppercase tracking-tighter leading-[0.8] mb-12">
+				   "SEUL ON VA PLUS VITE,<br/>ENSEMBLE ON VA PLUS LOIN."
 			   </h2>
-			   <button class="bg-surface-container-lowest text-primary px-10 py-5 rounded-sm font-headline font-extrabold text-[15px] hover:bg-surface transition-all uppercase tracking-widest shadow-2xl hover:shadow-primary/30 active:scale-95">
-				   Adhérer aujourd'hui
-			   </button>
 			</div>
 		</section>
 	</main>
+
+    <!-- Script Multi-step logic -->
+    <script is:inline>
+        function nextStep(step) {
+            const currentStep = step - 1;
+            const currentForm = document.getElementById(`step-${currentStep}-content`);
+            const inputs = currentForm.querySelectorAll('input[required]');
+            let valid = true;
+            inputs.forEach(input => {
+                if (!input.value) {
+                    input.classList.add('border-primary');
+                    valid = false;
+                } else {
+                    input.classList.remove('border-primary');
+                }
+            });
+            if (!valid) return;
+
+            document.getElementById(`step-${currentStep}-content`).classList.add('hidden', 'opacity-0');
+            const nextContent = document.getElementById(`step-${step}-content`);
+            nextContent.classList.remove('hidden');
+            setTimeout(() => {
+                nextContent.classList.remove('opacity-0', 'translate-y-4');
+            }, 50);
+
+            document.getElementById(`indicator-${step}`).classList.remove('opacity-30');
+            document.getElementById(`progress-${currentStep}`).classList.remove('translate-x-[-100%]');
+            document.getElementById('form-scroll').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function prevStep(step) {
+            const currentStep = step + 1;
+            document.getElementById(`step-${currentStep}-content`).classList.add('hidden', 'opacity-0', 'translate-y-4');
+            const prevContent = document.getElementById(`step-${step}-content`);
+            prevContent.classList.remove('hidden');
+            setTimeout(() => {
+                prevContent.classList.remove('opacity-0');
+            }, 50);
+            document.getElementById(`indicator-${currentStep}`).classList.add('opacity-30');
+            document.getElementById(`progress-${step}`).classList.add('translate-x-[-100%]');
+        }
+    </script>
 </Layout>
+
+<style>
+    select {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%235e3f3b'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 1rem center;
+        background-size: 1.5em;
+    }
+</style>

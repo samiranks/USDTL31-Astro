@@ -70,9 +70,7 @@ import Layout from '../layouts/Layout.astro';
 						</div>
 
 						<!-- Form Starts Here -->
-						<form name="adhesion-2025" method="POST" action="/merci" data-netlify="true" class="space-y-8" id="membership-form">
-                            <!-- Netlify Hidden Field (First child for better detection) -->
-                            <input type="hidden" name="form-name" value="adhesion-2025" />
+						<form class="space-y-8" id="membership-form">
 
 							<!-- STEP 1: IDENTITY -->
 							<div id="step-1-content" class="space-y-6 transition-all duration-500">
@@ -272,35 +270,43 @@ import Layout from '../layouts/Layout.astro';
             document.getElementById(`progress-${step}`).classList.add('translate-x-[-100%]');
         }
 
-        // Netlify Submit Feedback
+        // References aux elements du formulaire
         const membershipForm = document.getElementById('membership-form');
         const submitBtn = document.getElementById('submit-btn');
 
-        // Submission Logic with AJAX for Netlify
-        membershipForm.addEventListener('submit', (e) => {
+        // Soumission directe a la Netlify Function
+        membershipForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             
             const formData = new FormData(membershipForm);
             
+            // Feedback visuel de chargement
             submitBtn.disabled = true;
-            submitBtn.classList.add('opacity-50', 'cursor-not-allowed');
+            submitBtn.classList.add('opacity-60', 'cursor-not-allowed');
             submitBtn.innerHTML = 'Envoi en cours...';
 
-            fetch("/", {
-                method: "POST",
-                headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                body: new URLSearchParams(formData).toString(),
-            })
-            .then(() => {
-                window.location.href = "/merci/";
-            })
-            .catch((error) => {
-                console.error('Netlify Error:', error);
-                alert("Une erreur est survenue lors de l'envoi. Veuillez réessayer.");
+            try {
+                const response = await fetch('/.netlify/functions/handle-adhesion', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: new URLSearchParams(formData).toString(),
+                });
+
+                const result = await response.json();
+
+                if (response.ok && result.success) {
+                    // Succes : redirection vers la page de confirmation
+                    window.location.href = '/merci/';
+                } else {
+                    throw new Error(result.error || 'Erreur inconnue');
+                }
+            } catch (error) {
+                console.error('Erreur soumission :', error);
                 submitBtn.disabled = false;
-                submitBtn.classList.remove('opacity-50', 'cursor-not-allowed');
-                submitBtn.innerHTML = 'Réessayer la finalisation';
-            });
+                submitBtn.classList.remove('opacity-60', 'cursor-not-allowed');
+                submitBtn.innerHTML = 'Réessayer';
+                alert('Une erreur est survenue : ' + error.message + '\nVeuillez réessayer ou nous contacter au 05 61 00 00 00.');
+            }
         });
     </script>
 </Layout>

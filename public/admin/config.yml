@@ -1,3 +1,4 @@
+# CMS Configuration v1.1.2 - 2026-04-01-15:15
 backend:
   name: github
   repo: samiranks/USDTL31-Astro

@@ -123,26 +123,22 @@
         </div>
 
         <!-- Navigation Links -->
-        <nav class="flex flex-col space-y-2">
-            <a href="dashboard.html" class="flex items-center gap-4 px-8 py-4 bg-primary/5 text-primary border-r-[3px] border-primary font-body font-bold text-sm tracking-wide">
+        <nav class="flex flex-col space-y-1">
+            <a href="/dashboard.html" class="flex items-center gap-4 px-8 py-3 bg-primary/5 text-primary border-r-[3px] border-primary font-body font-bold text-sm tracking-wide">
                 <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
                 Dashboard
             </a>
-            <a href="#" class="flex items-center gap-4 px-8 py-4 text-on-surface-variant hover:text-on-background hover:bg-surface-container-low transition-colors font-body font-medium text-sm tracking-wide">
-                <span class="material-symbols-outlined">bar_chart</span>
-                Statistiques
-            </a>
-            <a href="#" class="flex items-center gap-4 px-8 py-4 text-on-surface-variant hover:text-on-background hover:bg-surface-container-low transition-colors font-body font-medium text-sm tracking-wide">
+            <a href="/admin/#/collections/adhesions" class="flex items-center gap-4 px-8 py-3 text-on-surface-variant hover:text-on-background hover:bg-surface-container-low transition-all font-body font-medium text-sm tracking-wide">
                 <span class="material-symbols-outlined">group</span>
                 Adhérents
             </a>
-            <a href="#" class="flex items-center gap-4 px-8 py-4 text-on-surface-variant hover:text-on-background hover:bg-surface-container-low transition-colors font-body font-medium text-sm tracking-wide">
-                <span class="material-symbols-outlined">settings</span>
-                Paramètres
+            <a href="/admin/" class="flex items-center gap-4 px-8 py-3 text-on-surface-variant hover:text-on-background hover:bg-surface-container-low transition-all font-body font-medium text-sm tracking-wide">
+                <span class="material-symbols-outlined">edit_note</span>
+                Contenu CMS
             </a>
-            <a href="#" class="flex items-center gap-4 px-8 py-4 text-on-surface-variant hover:text-on-background hover:bg-surface-container-low transition-colors font-body font-medium text-sm tracking-wide">
-                <span class="material-symbols-outlined">help</span>
-                Aide
+            <a href="/" class="flex items-center gap-4 px-8 py-3 text-on-surface-variant hover:text-on-background hover:bg-surface-container-low transition-all font-body font-medium text-sm tracking-wide border-t border-outline-variant/10 mt-4">
+                <span class="material-symbols-outlined">visibility</span>
+                Voir le site
             </a>
         </nav>
     </div>
@@ -158,35 +154,32 @@
                 <div class="font-body text-[10px] text-on-surface-variant truncate">admin@udtl31.fr</div>
             </div>
         </div>
-        <button class="font-body font-medium text-xs text-on-surface-variant hover:text-primary transition-colors flex items-center gap-2">
-            Déconnexion
+        <button onclick="window.location.href='/'" class="font-body font-medium text-xs text-on-surface-variant hover:text-primary transition-colors flex items-center gap-2 w-full text-left">
+            <span class="material-symbols-outlined text-sm">logout</span>
+            Quitter
         </button>
     </div>
 
 </aside>
 
 <!-- Main Dashboard Content -->
-<main class="ml-64 w-full p-12 shrink-0 overflow-x-hidden min-h-screen">
+<main class="ml-64 flex-1 p-6 md:p-12 min-h-screen max-w-full">
 
-    <!-- Header -->
     <header class="flex flex-col lg:flex-row lg:items-end justify-between mb-12 gap-8">
         <div>
             <div class="flex items-center gap-2 mb-4">
                 <span class="bg-tertiary-container text-on-tertiary-container px-3 py-1 text-[10px] font-bold tracking-widest uppercase rounded-sm">31 - HAUTE-GARONNE</span>
             </div>
-            <h1 class="text-5xl font-black font-headline tracking-tighter leading-none mb-4">
-                TABLEAU DE BORD<br/><span class="text-primary">ANALYTIQUE.</span>
+            <h1 class="text-4xl md:text-5xl font-black font-headline tracking-tighter leading-none mb-4">
+                TABLEAU DE BORD<br/><span class="text-primary">ADMINISTRATION.</span>
             </h1>
             <p class="font-body text-sm text-on-surface-variant max-w-xl leading-relaxed">
-                Suivi en temps réel des interactions membres et de l'activité numérique de l'Union Départementale des Transports et de la Logistique de la Haute-Garonne.
+                Gestion des adhésions et du contenu du site de l'Union Départementale des Transports et de la Logistique.
             </p>
         </div>
-        <div class="flex items-center gap-4 whitespace-nowrap">
-            <button class="bg-surface-container-high text-on-background px-6 py-4 rounded-sm font-headline font-bold text-xs tracking-widest uppercase hover:bg-surface-dim transition-colors">
-                EXPORTER PDF
-            </button>
-            <button class="bg-primary text-on-primary px-6 py-4 rounded-sm font-headline font-bold text-xs tracking-widest uppercase hover:bg-primary/90 transition-colors">
-                ACTUALISER
+        <div class="flex items-center gap-4">
+            <button onclick="window.location.reload()" class="bg-primary text-on-primary px-6 py-4 rounded-sm font-headline font-bold text-xs tracking-widest uppercase hover:bg-primary/90 transition-all active:scale-95 shadow-lg shadow-primary/20">
+                ACTUALISER LES DONNÉES
             </button>
         </div>
     </header>
@@ -343,74 +336,40 @@
 
     </div>
 
-    <!-- Table Section -->
-    <div class="bg-surface-container-lowest rounded-sm custom-shadow overflow-hidden">
-        <div class="p-8 border-b border-outline-variant/30 flex items-center justify-between">
-             <h3 class="font-headline font-black text-lg tracking-tight uppercase">Dernières Connexions</h3>
+    <!-- Main Utility Area -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+        
+        <!-- Quick Access -->
+        <div class="bg-surface-container-lowest p-8 rounded-sm custom-shadow border-l-4 border-primary flex flex-col justify-between">
+            <div>
+                <h3 class="font-headline font-black text-xl tracking-tight uppercase mb-4">Gestion des Adhérents</h3>
+                <p class="font-body text-sm text-on-surface-variant mb-8">
+                    Accédez directement à la liste complète des adhésions reçues via le formulaire du site. Vous pouvez consulter les détails, les champs de cotisation et les informations de contact.
+                </p>
+            </div>
+            <a href="/admin/#/collections/adhesions" class="bg-primary text-on-primary text-center px-6 py-4 rounded-sm font-headline font-bold text-xs tracking-widest uppercase hover:bg-primary/90 transition-all block w-full shadow-lg shadow-primary/20">
+                OUVRIR LA LISTE DES ADHÉRENTS
+            </a>
         </div>
-        <div class="overflow-x-auto">
-            <table class="w-full text-left font-body text-sm">
-                <thead>
-                    <tr class="border-b border-outline-variant/30 bg-surface-container-low/50">
-                        <th class="py-4 px-8 font-headline font-bold text-[9px] uppercase tracking-widest text-on-surface-variant">User ID</th>
-                        <th class="py-4 px-8 font-headline font-bold text-[9px] uppercase tracking-widest text-on-surface-variant">Secteur Activité</th>
-                        <th class="py-4 px-8 font-headline font-bold text-[9px] uppercase tracking-widest text-on-surface-variant">Statut</th>
-                        <th class="py-4 px-8 font-headline font-bold text-[9px] uppercase tracking-widest text-on-surface-variant">Horodatage</th>
-                        <th class="py-4 px-8 font-headline font-bold text-[9px] uppercase tracking-widest text-on-surface-variant text-right">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="border-b border-outline-variant/20 hover:bg-surface transition-colors cursor-pointer group">
-                        <td class="py-5 px-8 font-headline font-bold text-xs text-on-background">MBR-8821</td>
-                        <td class="py-5 px-8 text-on-surface-variant">Services Publics</td>
-                        <td class="py-5 px-8">
-                            <span class="bg-green-100 text-green-800 text-[9px] font-headline font-bold px-2 py-1 rounded-[2px] uppercase tracking-wider">Actif</span>
-                        </td>
-                        <td class="py-5 px-8 text-on-surface-variant text-xs">14/05/2024 - 10:42</td>
-                        <td class="py-5 px-8 text-right">
-                            <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors cursor-pointer">more_vert</span>
-                        </td>
-                    </tr>
-                    <tr class="border-b border-outline-variant/20 hover:bg-surface transition-colors cursor-pointer group">
-                        <td class="py-5 px-8 font-headline font-bold text-xs text-on-background">MBR-9014</td>
-                        <td class="py-5 px-8 text-on-surface-variant">Commerce / Vente</td>
-                        <td class="py-5 px-8">
-                            <span class="bg-green-100 text-green-800 text-[9px] font-headline font-bold px-2 py-1 rounded-[2px] uppercase tracking-wider">Actif</span>
-                        </td>
-                        <td class="py-5 px-8 text-on-surface-variant text-xs">14/05/2024 - 10:15</td>
-                        <td class="py-5 px-8 text-right">
-                            <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors cursor-pointer">more_vert</span>
-                        </td>
-                    </tr>
-                    <tr class="border-b border-outline-variant/20 hover:bg-surface transition-colors cursor-pointer group">
-                        <td class="py-5 px-8 font-headline font-bold text-xs text-on-background">MBR-7763</td>
-                        <td class="py-5 px-8 text-on-surface-variant">Santé & Social</td>
-                        <td class="py-5 px-8">
-                            <span class="bg-yellow-100 text-yellow-800 text-[9px] font-headline font-bold px-2 py-1 rounded-[2px] uppercase tracking-wider">En Attente</span>
-                        </td>
-                        <td class="py-5 px-8 text-on-surface-variant text-xs">14/05/2024 - 09:58</td>
-                        <td class="py-5 px-8 text-right">
-                            <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors cursor-pointer">more_vert</span>
-                        </td>
-                    </tr>
-                    <tr class="hover:bg-surface transition-colors cursor-pointer group">
-                        <td class="py-5 px-8 font-headline font-bold text-xs text-on-background">MBR-8120</td>
-                        <td class="py-5 px-8 text-on-surface-variant">Transports</td>
-                        <td class="py-5 px-8">
-                            <span class="bg-red-100 text-red-800 text-[9px] font-headline font-bold px-2 py-1 rounded-[2px] uppercase tracking-wider">Bloqué</span>
-                        </td>
-                        <td class="py-5 px-8 text-on-surface-variant text-xs">14/05/2024 - 09:32</td>
-                        <td class="py-5 px-8 text-right">
-                            <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors cursor-pointer">more_vert</span>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="bg-surface-container-low/50 p-4 border-t border-outline-variant/30 text-center">
-             <button class="font-headline font-bold text-[10px] text-primary uppercase tracking-widest hover:tracking-[0.2em] transition-all py-2">
-                 Afficher l'historique complet
-             </button>
+
+        <!-- CMS Access -->
+        <div class="signature-gradient text-on-primary p-8 rounded-sm relative shadow-xl overflow-hidden flex flex-col justify-between">
+            <div class="relative z-10">
+                <h3 class="font-headline font-black text-xl tracking-tight uppercase leading-tight mb-4">Édition du Contenu</h3>
+                <p class="font-body text-sm leading-relaxed opacity-90 mb-8 font-medium">
+                    Modifier les textes, les actualités et les documents officiels de l'UDTL 31 directement via l'interface simplifiée.
+                </p>
+                <div class="space-y-3">
+                    <a href="/admin/" class="bg-white/10 hover:bg-white/20 transition-all border border-white/20 rounded-[2px] p-4 flex items-center justify-between group">
+                        <span class="font-headline font-bold text-xs uppercase tracking-wider">Accéder au CMS complet</span>
+                        <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="absolute -right-8 -bottom-8 opacity-10 mix-blend-overlay pointer-events-none">
+                <span class="material-symbols-outlined text-[180px]" style="font-variation-settings: 'FILL' 1;">edit_document</span>
+            </div>
         </div>
     </div>
 

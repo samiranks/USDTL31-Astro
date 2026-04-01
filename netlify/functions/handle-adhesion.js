@@ -1,7 +1,6 @@
-const { Octokit } = require("@octokit/rest");
+import { Octokit } from "@octokit/rest";
 
-exports.handler = async (event) => {
-  // CORS headers pour eviter les rejets cross-origin
+export const handler = async (event) => {
   const headers = {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Headers": "Content-Type",
@@ -29,15 +28,25 @@ exports.handler = async (event) => {
       return {
         statusCode: 400,
         headers,
-        body: JSON.stringify({ error: "Champs nom, prenom et email requis." }),
+        body: JSON.stringify({ error: "Champs requis manquants (nom, prenom, email)." }),
+      };
+    }
+
+    // Verification du token GitHub
+    const token = process.env.GITHUB_TOKEN;
+    if (!token) {
+      console.error("❌ GITHUB_TOKEN manquant dans les variables d'environnement Netlify.");
+      return {
+        statusCode: 500,
+        headers,
+        body: JSON.stringify({ error: "Configuration serveur manquante." }),
       };
     }
 
     // Nom de fichier unique avec horodatage
     const date = new Date().toISOString();
     const slug = `${date.split("T")[0]}-${nom.toLowerCase().replace(/\s+/g, "-")}-${prenom.toLowerCase().replace(/\s+/g, "-")}`;
-    const fileName = `${slug}.json`;
-    const filePath = `src/content/adhesions/${fileName}`;
+    const filePath = `src/content/adhesions/${slug}.json`;
 
     const content = JSON.stringify(
       { nom, prenom, email, tel, entreprise, fonction, contrat, temps, cotisation, frequence, date },
@@ -46,16 +55,6 @@ exports.handler = async (event) => {
     );
 
     // Initialiser Octokit avec le token GitHub
-    const token = process.env.GITHUB_TOKEN;
-    if (!token) {
-      console.error("GITHUB_TOKEN manquant !");
-      return {
-        statusCode: 500,
-        headers,
-        body: JSON.stringify({ error: "Configuration serveur manquante (GITHUB_TOKEN)." }),
-      };
-    }
-
     const octokit = new Octokit({ auth: token });
 
     // Creer le fichier JSON dans le repo GitHub
@@ -73,14 +72,14 @@ exports.handler = async (event) => {
     return {
       statusCode: 200,
       headers,
-      body: JSON.stringify({ success: true, message: "Adhesion enregistree avec succes." }),
+      body: JSON.stringify({ success: true }),
     };
   } catch (error) {
-    console.error("Erreur handle-adhesion:", error.message);
+    console.error("❌ Erreur handle-adhesion:", error.message);
     return {
       statusCode: 500,
       headers,
-      body: JSON.stringify({ error: error.message }),
+      body: JSON.stringify({ error: error.message || "Erreur serveur interne." }),
     };
   }
 };

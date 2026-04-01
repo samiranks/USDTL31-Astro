@@ -408,7 +408,8 @@
         const total = members.length;
         const now = new Date();
         const thisMonth = members.filter(m => {
-            const d = new Date(m.date);
+            const d = new Date(m.date_adhesion || m.date);
+            if (isNaN(d.getTime())) return false;
             return d.getMonth() === now.getMonth() && d.getFullYear() === now.getFullYear();
         }).length;
 
@@ -487,7 +488,7 @@
                 <td>${m.fonction || '<span class="td-muted">—</span>'}</td>
                 <td><span class="badge ${getBadge(m.contrat)}">${m.contrat || '—'}</span></td>
                 <td style="font-feature-settings:'tnum'">${m.cotisation ? m.cotisation + ' €' : '—'}</td>
-                <td class="td-muted">${formatDate(m.date)}</td>
+                <td class="td-muted">${formatDate(m.date_adhesion || m.date)}</td>
             </tr>`).join('');
 
         document.getElementById('members-container').innerHTML = `
@@ -530,7 +531,7 @@
 
             if (!res.ok) throw new Error(data.error || 'Erreur réseau');
 
-            allMembers = data.adhesions || [];
+            allMembers = Array.isArray(data) ? data : (data.adhesions || []);
             renderKPIs(allMembers);
             renderStats(allMembers);
             renderTable(allMembers);

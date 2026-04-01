@@ -24,9 +24,9 @@ const adhesions = defineCollection({
     fonction: z.string(),
     contrat: z.string(),
     temps: z.string(),
-    cotisation: z.string(),
-    frequence: z.string(),
-    date: z.coerce.date(),
+    cotisation: z.string().optional(),
+    frequence: z.string().optional(),
+    date: z.coerce.date().optional(),
   }),
 });
 

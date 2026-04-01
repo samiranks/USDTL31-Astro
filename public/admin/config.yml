@@ -1,9 +1,10 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: samiranks/USDTL31-Astro
   branch: main
 
 local_backend: true
-display_url: https://usdtl31.netlify.app
+display_url: https://usdtl31.pages.dev
 
 media_folder: "public/images/uploads"
 public_folder: "/images/uploads"

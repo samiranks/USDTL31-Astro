@@ -544,7 +544,7 @@
         document.getElementById('stats-contrat').innerHTML = '<div class="loading"><div class="spinner"></div></div>';
 
         try {
-            const res = await fetch('/.netlify/functions/get-adhesions');
+            const res = await fetch('/api/get-adhesions');
             const data = await res.json();
 
             if (!res.ok) throw new Error(data.error || 'Erreur réseau');

@@ -1,0 +1,12 @@
+{
+  "nom": "TESTNOM",
+  "prenom": "TESTPRENOM",
+  "email": "test@test.com",
+  "tel": "0601020304",
+  "entreprise": "TESTENTREPRISE",
+  "fonction": "TESTFONCTION",
+  "contrat": "CDI",
+  "cotisation": "137",
+  "frequence": "annuelle",
+  "temps": "Temps plein"
+}

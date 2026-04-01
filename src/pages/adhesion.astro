@@ -70,7 +70,7 @@ import Layout from '../layouts/Layout.astro';
 						</div>
 
 						<!-- Form Starts Here -->
-						<form name="adhesion-2025" method="POST" action="/merci/" data-netlify="true" class="space-y-8" id="membership-form">
+						<form name="adhesion-2025" method="POST" action="/merci" data-netlify="true" class="space-y-8" id="membership-form">
                             <!-- Netlify Hidden Field (First child for better detection) -->
                             <input type="hidden" name="form-name" value="adhesion-2025" />
 
@@ -267,6 +267,22 @@ import Layout from '../layouts/Layout.astro';
         });
     </script>
 </Layout>
+
+
+    <!-- GHOST FORM FOR NETLIFY DETECTION -->
+    <form name="adhesion-2025" data-netlify="true" hidden>
+        <input type="text" name="nom" />
+        <input type="text" name="prenom" />
+        <input type="email" name="email" />
+        <input type="tel" name="tel" />
+        <input type="text" name="entreprise" />
+        <input type="text" name="fonction" />
+        <input type="text" name="contrat" />
+        <input type="text" name="temps" />
+        <input type="text" name="cotisation" />
+        <input type="text" name="frequence" />
+        <input type="hidden" name="form-name" value="adhesion-2025" />
+    </form>
 
 <style>
     select {

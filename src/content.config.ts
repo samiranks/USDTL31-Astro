@@ -13,6 +13,24 @@ const activites = defineCollection({
   }),
 });
 
+const adhesions = defineCollection({
+  loader: glob({ pattern: "**/*.json", base: "./src/content/adhesions" }),
+  schema: z.object({
+    nom: z.string(),
+    prenom: z.string(),
+    email: z.string().email(),
+    tel: z.string(),
+    entreprise: z.string(),
+    fonction: z.string(),
+    contrat: z.string(),
+    temps: z.string(),
+    cotisation: z.string(),
+    frequence: z.string(),
+    date: z.coerce.date(),
+  }),
+});
+
 export const collections = {
   activites: activites,
+  adhesions: adhesions,
 };

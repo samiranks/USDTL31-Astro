@@ -23,3 +23,25 @@ collections:
       - {label: "Image de couverture", name: "image", widget: "image", required: false}
       - {label: "Résumé", name: "summary", widget: "text"}
       - {label: "Corps de l'article", name: "body", widget: "markdown"}
+  
+  - name: "adhesions"
+    label: "Adhésions & Inscriptions"
+    folder: "src/content/adhesions"
+    extension: "json"
+    format: "json"
+    create: false # Read-only log
+    slug: "{{year}}-{{month}}-{{day}}-{{fields.nom}}-{{fields.prenom}}"
+    editor:
+      preview: false
+    fields:
+      - {label: "Nom", name: "nom", widget: "string"}
+      - {label: "Prénom", name: "prenom", widget: "string"}
+      - {label: "Email", name: "email", widget: "string"}
+      - {label: "Téléphone", name: "tel", widget: "string"}
+      - {label: "Entreprise", name: "entreprise", widget: "string"}
+      - {label: "Fonction", name: "fonction", widget: "string"}
+      - {label: "Type de contrat", name: "contrat", widget: "string"}
+      - {label: "Temps de travail", name: "temps", widget: "string"}
+      - {label: "Cotisation annuelle", name: "cotisation", widget: "string"}
+      - {label: "Fréquence", name: "frequence", widget: "string"}
+      - {label: "Date de soumission", name: "date", widget: "datetime"}

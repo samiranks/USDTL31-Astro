@@ -4,576 +4,570 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Dashboard — UDTL 31</title>
-    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;600;700;800;900&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
     <style>
-        *, *::before, *::after { box-sizing: border-box; }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         :root {
-            --sidebar-w: 240px;
-            --primary: #b40011;
-            --primary-dark: #8a000c;
-            --surface: #fcf8f9;
-            --surface-low: #f6f3f4;
-            --surface-high: #eae7e8;
-            --border: #e8bcb7;
+            --w: 220px;
+            --red: #b40011;
+            --red-dark: #8a000c;
+            --bg: #f7f4f5;
+            --white: #ffffff;
+            --border: #e4d4d2;
             --text: #1b1b1c;
-            --muted: #5e3f3b;
+            --muted: #6b4a46;
+            --blue: #005a9b;
+            --green: #2d7a3a;
         }
 
-        html, body {
-            margin: 0; padding: 0;
-            height: 100%;
-            background: var(--surface);
-            color: var(--text);
-            font-family: 'Work Sans', sans-serif;
-            overflow-x: hidden;
-        }
-
-        h1, h2, h3, h4, .headline {
-            font-family: 'Epilogue', sans-serif;
-        }
+        html, body { height: 100%; background: var(--bg); color: var(--text); font-family: 'Work Sans', sans-serif; }
+        h1,h2,h3,h4,h5 { font-family: 'Epilogue', sans-serif; }
+        a { text-decoration: none; }
 
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-            font-size: 20px;
-            line-height: 1;
-            vertical-align: middle;
+            font-size: 18px; line-height: 1; vertical-align: middle; flex-shrink: 0;
         }
 
         /* ─── LAYOUT ─── */
-        .layout {
-            display: flex;
-            min-height: 100vh;
-        }
+        .app { display: flex; min-height: 100vh; }
 
         /* ─── SIDEBAR ─── */
         .sidebar {
-            width: var(--sidebar-w);
-            min-width: var(--sidebar-w);
-            background: #fff;
-            border-right: 1px solid var(--border);
-            display: flex;
-            flex-direction: column;
-            position: fixed;
-            top: 0; left: 0;
-            height: 100vh;
-            z-index: 100;
-            overflow: hidden;
+            width: var(--w); min-width: var(--w);
+            background: var(--white); border-right: 1px solid var(--border);
+            display: flex; flex-direction: column;
+            position: fixed; top: 0; left: 0; height: 100vh; z-index: 50;
         }
-
-        .sidebar-logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 24px 20px;
-            border-bottom: 1px solid var(--border);
-        }
-        .logo-badge {
-            width: 40px; height: 40px;
-            background: var(--primary);
-            border-radius: 6px;
-            display: flex; align-items: center; justify-content: center;
-            color: #fff;
-            font-family: 'Epilogue', sans-serif;
-            font-weight: 900;
-            font-size: 14px;
-            flex-shrink: 0;
-        }
-        .logo-text { line-height: 1.1; }
-        .logo-text strong { display: block; font-size: 13px; font-weight: 800; color: var(--text); font-family: 'Epilogue', sans-serif; }
-        .logo-text span { font-size: 9px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); }
-
-        .sidebar-nav { flex: 1; padding: 16px 0; }
-        .nav-section-label {
-            font-size: 9px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            color: var(--muted);
-            padding: 8px 20px 4px;
-            margin-top: 8px;
-        }
-        .nav-link {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 10px 20px;
-            font-size: 13px;
-            font-weight: 500;
-            color: var(--muted);
-            text-decoration: none;
-            border-right: 2px solid transparent;
-            transition: all 0.15s ease;
-        }
-        .nav-link:hover { background: var(--surface-low); color: var(--text); }
-        .nav-link.active {
-            background: rgba(180, 0, 17, 0.06);
-            color: var(--primary);
-            border-right-color: var(--primary);
-            font-weight: 700;
-        }
-
-        .sidebar-user {
-            padding: 16px 20px;
-            border-top: 1px solid var(--border);
-        }
-        .user-card {
-            background: var(--surface-low);
-            border-radius: 6px;
-            padding: 10px 12px;
+        .sidebar-header {
+            padding: 20px 16px; border-bottom: 1px solid var(--border);
             display: flex; align-items: center; gap: 10px;
-            margin-bottom: 8px;
         }
-        .user-avatar {
-            width: 32px; height: 32px;
-            background: var(--primary);
-            color: #fff;
-            border-radius: 6px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 10px; font-weight: 800;
-            font-family: 'Epilogue', sans-serif;
-            flex-shrink: 0;
+        .s-logo { width: 36px; height: 36px; background: var(--red); border-radius: 6px; display: flex; align-items: center; justify-content: center; color: #fff; font-family: 'Epilogue', sans-serif; font-weight: 900; font-size: 13px; flex-shrink: 0; }
+        .s-title { font-size: 12px; font-weight: 800; font-family: 'Epilogue', sans-serif; }
+        .s-sub { font-size: 9px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); margin-top: 1px; }
+
+        .sidebar-nav { flex: 1; padding: 12px 0; overflow-y: auto; }
+        .nav-label { font-size: 8.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.18em; color: var(--muted); padding: 10px 16px 4px; }
+        .nav-a {
+            display: flex; align-items: center; gap: 8px;
+            padding: 9px 16px; font-size: 12.5px; font-weight: 500; color: var(--muted);
+            border-right: 2px solid transparent; transition: all 0.12s;
         }
-        .user-info strong { display: block; font-size: 12px; font-weight: 700; color: var(--text); }
-        .user-info span { font-size: 10px; color: var(--muted); }
-        .btn-logout {
-            display: flex; align-items: center; gap: 6px;
-            font-size: 12px; color: var(--muted);
-            background: none; border: none; cursor: pointer;
-            padding: 4px 0; transition: color 0.15s;
-            font-family: 'Work Sans', sans-serif;
-        }
-        .btn-logout:hover { color: var(--primary); }
+        .nav-a:hover { background: var(--bg); color: var(--text); }
+        .nav-a.active { background: rgba(180,0,17,.06); color: var(--red); border-right-color: var(--red); font-weight: 700; }
+        .nav-a .material-symbols-outlined { font-size: 17px; }
+
+        .sidebar-footer { padding: 14px 16px; border-top: 1px solid var(--border); }
+        .user-row { display: flex; align-items: center; gap: 8px; padding: 8px 10px; background: var(--bg); border-radius: 6px; margin-bottom: 8px; }
+        .user-av { width: 28px; height: 28px; background: var(--red); color: #fff; border-radius: 5px; display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 800; font-family: 'Epilogue', sans-serif; flex-shrink: 0; }
+        .user-name { font-size: 11px; font-weight: 700; }
+        .user-role { font-size: 9px; color: var(--muted); }
+        .btn-quit { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--muted); background: none; border: none; cursor: pointer; font-family: 'Work Sans', sans-serif; transition: color .12s; padding: 2px 0; }
+        .btn-quit:hover { color: var(--red); }
 
         /* ─── MAIN ─── */
-        .main {
-            margin-left: var(--sidebar-w);
-            flex: 1;
-            min-height: 100vh;
-            padding: 40px 48px;
-            max-width: calc(100vw - var(--sidebar-w));
-        }
+        .main { margin-left: var(--w); flex: 1; min-height: 100vh; padding: 36px 40px; max-width: calc(100vw - var(--w)); }
 
-        /* ─── PAGE HEADER ─── */
-        .page-header {
-            display: flex;
-            align-items: flex-end;
-            justify-content: space-between;
-            margin-bottom: 40px;
-            gap: 24px;
-            flex-wrap: wrap;
-        }
-        .page-header h1 {
-            font-size: 36px;
-            font-weight: 900;
-            line-height: 1;
-            letter-spacing: -0.03em;
-            margin: 0 0 6px;
-        }
-        .page-header h1 span { color: var(--primary); }
-        .page-header p { font-size: 13px; color: var(--muted); margin: 0; max-width: 420px; line-height: 1.6; }
-        .badge-dept {
-            display: inline-block;
-            background: #0073c4;
-            color: #f2f5ff;
-            font-size: 9px;
-            font-weight: 700;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            padding: 4px 10px;
-            border-radius: 2px;
-            margin-bottom: 12px;
-        }
-        .btn-primary {
-            background: var(--primary);
-            color: #fff;
-            border: none;
-            padding: 12px 24px;
-            font-family: 'Epilogue', sans-serif;
-            font-weight: 800;
-            font-size: 11px;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: all 0.15s;
-            text-decoration: none;
-            display: inline-block;
-        }
-        .btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(180,0,17,0.25); }
-        .btn-primary:active { transform: scale(0.98); }
+        /* ─── TOPBAR ─── */
+        .topbar { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 32px; gap: 16px; flex-wrap: wrap; }
+        .topbar-left {}
+        .dept-badge { display: inline-flex; align-items: center; gap: 5px; background: var(--blue); color: #e8f0ff; font-size: 9px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; padding: 3px 8px; border-radius: 2px; margin-bottom: 10px; }
+        .topbar h1 { font-size: 30px; font-weight: 900; letter-spacing: -0.03em; line-height: 1; }
+        .topbar h1 span { color: var(--red); }
+        .topbar-actions { display: flex; gap: 8px; }
+        .btn { display: inline-flex; align-items: center; gap: 6px; padding: 10px 16px; border-radius: 5px; font-family: 'Epilogue', sans-serif; font-size: 10.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; cursor: pointer; transition: all .15s; border: none; }
+        .btn-primary { background: var(--red); color: #fff; }
+        .btn-primary:hover { background: var(--red-dark); transform: translateY(-1px); box-shadow: 0 4px 14px rgba(180,0,17,.25); }
+        .btn-outline { background: var(--white); color: var(--text); border: 1px solid var(--border); }
+        .btn-outline:hover { background: var(--bg); }
 
-        /* ─── KPI GRID ─── */
-        .kpi-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin-bottom: 32px;
-        }
-        .kpi-card {
-            background: #fff;
-            border-radius: 8px;
-            padding: 28px;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid var(--border);
-            transition: box-shadow 0.2s;
-        }
-        .kpi-card:hover { box-shadow: 0 8px 32px rgba(94,63,59,0.08); }
-        .kpi-card::before {
-            content: '';
-            position: absolute;
-            bottom: 0; left: 0; right: 0;
-            height: 3px;
-        }
-        .kpi-card.red::before { background: var(--primary); }
-        .kpi-card.blue::before { background: #005a9b; }
-        .kpi-card.green::before { background: #2d7a3a; }
-        .kpi-label {
-            font-size: 10px; font-weight: 700;
-            text-transform: uppercase; letter-spacing: 0.15em;
-            color: var(--muted);
-            margin-bottom: 12px;
-            font-family: 'Epilogue', sans-serif;
-        }
-        .kpi-value {
-            font-size: 42px; font-weight: 900;
-            color: var(--text);
-            line-height: 1;
-            margin-bottom: 10px;
-            font-family: 'Epilogue', sans-serif;
-        }
-        .kpi-sub {
-            font-size: 12px; font-weight: 600;
-            display: flex; align-items: center; gap: 4px;
-        }
-        .kpi-sub.up { color: var(--primary); }
-        .kpi-sub.blue { color: #005a9b; }
-        .kpi-sub.green { color: #2d7a3a; }
-        .kpi-sub.muted { color: var(--muted); }
-        .kpi-icon {
-            position: absolute;
-            right: 20px; top: 20px;
-            font-size: 48px !important;
-            color: var(--text);
-            opacity: 0.05;
-        }
+        /* ─── KPI ─── */
+        .kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 28px; }
+        .kpi { background: var(--white); border: 1px solid var(--border); border-radius: 8px; padding: 20px; position: relative; overflow: hidden; transition: box-shadow .2s; }
+        .kpi:hover { box-shadow: 0 4px 20px rgba(94,63,59,.07); }
+        .kpi::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; }
+        .kpi.k-red::after { background: var(--red); }
+        .kpi.k-blue::after { background: var(--blue); }
+        .kpi.k-green::after { background: var(--green); }
+        .kpi.k-orange::after { background: #d9630f; }
+        .kpi-label { font-family: 'Epilogue', sans-serif; font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: var(--muted); margin-bottom: 8px; }
+        .kpi-val { font-family: 'Epilogue', sans-serif; font-size: 36px; font-weight: 900; line-height: 1; margin-bottom: 6px; }
+        .kpi-sub { font-size: 11px; color: var(--muted); display: flex; align-items: center; gap: 4px; }
+        .kpi-sub.up { color: var(--green); }
+        .kpi-icon { position: absolute; right: 14px; top: 14px; font-size: 36px !important; opacity: 0.06; }
 
-        /* ─── ACTION CARDS ─── */
-        .action-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            margin-bottom: 32px;
-        }
-        .action-card {
-            background: #fff;
-            border-radius: 8px;
-            padding: 28px;
-            border: 1px solid var(--border);
-            display: flex; flex-direction: column;
-            justify-content: space-between;
-            gap: 20px;
-            text-decoration: none;
-            color: inherit;
-            transition: all 0.2s;
-            position: relative;
-            overflow: hidden;
-        }
-        .action-card:hover { box-shadow: 0 8px 32px rgba(94,63,59,0.08); transform: translateY(-2px); }
-        .action-card .icon-wrap {
-            width: 44px; height: 44px;
-            background: rgba(180,0,17,0.08);
-            border-radius: 8px;
-            display: flex; align-items: center; justify-content: center;
-            margin-bottom: 8px;
-        }
-        .action-card .icon-wrap .material-symbols-outlined { color: var(--primary); font-size: 22px !important; }
-        .action-card h3 {
-            font-size: 16px; font-weight: 800;
-            margin: 0 0 8px;
-            letter-spacing: -0.01em;
-        }
-        .action-card p { font-size: 12px; color: var(--muted); line-height: 1.6; margin: 0; }
-        .action-card .action-btn {
-            display: flex; align-items: center; justify-content: center; gap: 8px;
-            background: var(--primary);
-            color: #fff;
-            padding: 12px 20px;
-            border-radius: 4px;
-            font-size: 11px; font-weight: 800;
-            text-transform: uppercase; letter-spacing: 0.1em;
-            text-decoration: none;
-            font-family: 'Epilogue', sans-serif;
-            transition: all 0.15s;
-        }
-        .action-card .action-btn:hover { background: var(--primary-dark); }
-        .action-card.dark {
-            background: linear-gradient(135deg, #b40011 0%, #de171f 100%);
-            border: none; color: #fff;
-        }
-        .action-card.dark .icon-wrap { background: rgba(255,255,255,0.15); }
-        .action-card.dark .icon-wrap .material-symbols-outlined { color: #fff; }
-        .action-card.dark h3 { color: #fff; }
-        .action-card.dark p { color: rgba(255,255,255,0.8); }
-        .action-card.dark .action-btn {
-            background: rgba(255,255,255,0.2);
-            border: 1px solid rgba(255,255,255,0.3);
-        }
-        .action-card.dark .action-btn:hover { background: rgba(255,255,255,0.3); }
-        .action-card.dark .deco {
-            position: absolute;
-            right: -20px; bottom: -20px;
-            font-size: 120px !important;
-            color: rgba(255,255,255,0.07);
-            pointer-events: none;
-        }
+        /* ─── GRID SECTION ─── */
+        .section-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 28px; }
 
-        /* ─── CHART CARD ─── */
-        .chart-card {
-            background: #fff;
-            border-radius: 8px;
-            padding: 28px;
-            border: 1px solid var(--border);
-            margin-bottom: 32px;
-            border-left: 4px solid var(--primary);
-        }
-        .chart-header {
-            display: flex; align-items: center; justify-content: space-between;
-            margin-bottom: 24px;
-        }
-        .chart-header h3 { font-size: 14px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; margin: 0; }
-        .chart-legend { display: flex; gap: 16px; }
-        .legend-item { display: flex; align-items: center; gap: 6px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; }
-        .legend-dot { width: 8px; height: 8px; border-radius: 2px; }
+        /* ─── PANEL ─── */
+        .panel { background: var(--white); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+        .panel-head { padding: 16px 20px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+        .panel-title { font-size: 13px; font-weight: 800; font-family: 'Epilogue', sans-serif; text-transform: uppercase; letter-spacing: 0.03em; }
+        .panel-body { padding: 20px; }
 
-        .bar-chart { height: 160px; display: flex; align-items: flex-end; gap: 12px; border-bottom: 2px solid var(--border); padding-bottom: 0; }
-        .bar-group { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 2px; height: 100%; justify-content: flex-end; }
-        .bar { width: 100%; border-radius: 3px 3px 0 0; transition: opacity 0.2s; }
-        .bar:hover { opacity: 0.8; }
-        .bar.primary { background: var(--primary); }
-        .bar.secondary { background: #c8c6c5; }
-        .bar-labels { display: flex; gap: 12px; padding-top: 10px; }
-        .bar-labels span { flex: 1; text-align: center; font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); font-family: 'Epilogue', sans-serif; }
+        /* ─── STAT BARS ─── */
+        .stat-item { margin-bottom: 14px; }
+        .stat-item:last-child { margin-bottom: 0; }
+        .stat-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; }
+        .stat-label { font-size: 11.5px; font-weight: 600; }
+        .stat-count { font-size: 11px; color: var(--muted); font-weight: 600; }
+        .stat-bar { height: 6px; background: var(--bg); border-radius: 99px; overflow: hidden; }
+        .stat-bar-fill { height: 100%; border-radius: 99px; transition: width 0.8s ease; }
+
+        /* ─── MINI CALENDAR HEATMAP ─── */
+        .heatmap-row { display: flex; gap: 4px; flex-wrap: wrap; }
+        .heatmap-day {
+            width: 20px; height: 20px; border-radius: 3px;
+            background: var(--bg); border: 1px solid var(--border);
+            cursor: default; transition: transform .1s;
+        }
+        .heatmap-day:hover { transform: scale(1.2); }
+        .heatmap-day.h1 { background: rgba(180,0,17,.15); border-color: rgba(180,0,17,.2); }
+        .heatmap-day.h2 { background: rgba(180,0,17,.35); border-color: rgba(180,0,17,.4); }
+        .heatmap-day.h3 { background: rgba(180,0,17,.6); border-color: rgba(180,0,17,.7); }
+        .heatmap-day.h4 { background: var(--red); border-color: var(--red-dark); }
+
+        /* ─── MEMBER TABLE ─── */
+        .member-table-wrap { overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; }
+        thead tr { border-bottom: 2px solid var(--border); }
+        th {
+            padding: 10px 14px; text-align: left;
+            font-family: 'Epilogue', sans-serif; font-size: 9px; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 0.15em; color: var(--muted);
+        }
+        tbody tr { border-bottom: 1px solid var(--bg); transition: background .1s; }
+        tbody tr:last-child { border-bottom: none; }
+        tbody tr:hover { background: var(--bg); }
+        td { padding: 12px 14px; font-size: 12.5px; vertical-align: middle; }
+        .td-name { font-weight: 700; font-family: 'Epilogue', sans-serif; font-size: 13px; }
+        .td-muted { color: var(--muted); font-size: 11.5px; }
+        .badge { display: inline-block; padding: 2px 8px; border-radius: 99px; font-size: 9.5px; font-weight: 700; font-family: 'Epilogue', sans-serif; text-transform: uppercase; letter-spacing: 0.06em; }
+        .badge-cdi { background: rgba(45,122,58,.12); color: var(--green); }
+        .badge-cdd { background: rgba(0,90,155,.12); color: var(--blue); }
+        .badge-interim { background: rgba(217,99,15,.12); color: #d9630f; }
+        .badge-apprenti { background: rgba(94,63,59,.12); color: var(--muted); }
+        .avatar { width: 28px; height: 28px; border-radius: 6px; background: var(--red); color: #fff; font-size: 9px; font-weight: 800; font-family: 'Epilogue', sans-serif; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .member-cell { display: flex; align-items: center; gap: 10px; }
+
+        /* ─── QUICK ACCESS ─── */
+        .quick-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 12px; }
+        .quick-card { padding: 16px; border-radius: 6px; border: 1px solid var(--border); display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--text); transition: all .15s; background: var(--white); }
+        .quick-card:hover { box-shadow: 0 4px 16px rgba(94,63,59,.08); transform: translateY(-1px); }
+        .quick-icon { width: 36px; height: 36px; border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .qi-red { background: rgba(180,0,17,.08); }
+        .qi-red .material-symbols-outlined { color: var(--red); }
+        .qi-blue { background: rgba(0,90,155,.08); }
+        .qi-blue .material-symbols-outlined { color: var(--blue); }
+        .qi-orange { background: rgba(217,99,15,.08); }
+        .qi-orange .material-symbols-outlined { color: #d9630f; }
+        .qi-green { background: rgba(45,122,58,.08); }
+        .qi-green .material-symbols-outlined { color: var(--green); }
+        .quick-text strong { display: block; font-size: 12px; font-weight: 700; font-family: 'Epilogue', sans-serif; margin-bottom: 2px; }
+        .quick-text span { font-size: 10px; color: var(--muted); }
+
+        /* ─── LOADING ─── */
+        .loading { display: flex; align-items: center; justify-content: center; padding: 40px; gap: 10px; color: var(--muted); font-size: 13px; }
+        .spinner { width: 18px; height: 18px; border: 2px solid var(--border); border-top-color: var(--red); border-radius: 50%; animation: spin 0.7s linear infinite; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* ─── EMPTY ─── */
+        .empty { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px 20px; color: var(--muted); text-align: center; gap: 8px; }
+        .empty .material-symbols-outlined { font-size: 40px !important; opacity: 0.3; }
+        .empty p { font-size: 12px; }
+
+        /* ─── FULL WIDTH PANEL ─── */
+        .panel-full { background: var(--white); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; margin-bottom: 28px; }
 
         /* ─── FOOTER ─── */
-        .dash-footer {
-            text-align: center;
-            padding: 20px 0 0;
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            color: var(--muted);
-            border-top: 1px solid var(--border);
-        }
+        .dash-footer { text-align: center; padding: 16px 0; font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.18em; color: var(--muted); border-top: 1px solid var(--border); }
     </style>
 </head>
 <body>
-<div class="layout">
+<div class="app">
 
     <!-- SIDEBAR -->
     <aside class="sidebar">
-        <div class="sidebar-logo">
-            <div class="logo-badge">31</div>
-            <div class="logo-text">
-                <strong>Administration</strong>
-                <span>UDTL 31 · Haute-Garonne</span>
+        <div class="sidebar-header">
+            <div class="s-logo">31</div>
+            <div>
+                <div class="s-title">Administration</div>
+                <div class="s-sub">UDTL 31 · Haute-Garonne</div>
             </div>
         </div>
-
         <nav class="sidebar-nav">
-            <div class="nav-section-label">General</div>
-            <a href="/dashboard.html" class="nav-link active">
+            <div class="nav-label">Général</div>
+            <a href="/dashboard.html" class="nav-a active">
                 <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">dashboard</span>
                 Dashboard
             </a>
-
-            <div class="nav-section-label">Adhésions</div>
-            <a href="https://app.netlify.com/sites/usdtl31/forms" target="_blank" class="nav-link">
+            <div class="nav-label">Adhésions</div>
+            <a href="https://app.netlify.com/sites/usdtl31/forms" target="_blank" class="nav-a">
                 <span class="material-symbols-outlined">inbox</span>
                 Soumissions Netlify
             </a>
-            <a href="/admin/#/collections/adhesions" class="nav-link">
+            <a href="/admin/#/collections/adhesions" class="nav-a">
                 <span class="material-symbols-outlined">group</span>
                 Adhérents (CMS)
             </a>
-
-            <div class="nav-section-label">Contenu</div>
-            <a href="/admin/" class="nav-link">
+            <div class="nav-label">Contenu</div>
+            <a href="/admin/" class="nav-a">
                 <span class="material-symbols-outlined">edit_note</span>
                 Éditeur CMS
             </a>
-
-            <div class="nav-section-label">Site</div>
-            <a href="/" class="nav-link">
+            <div class="nav-label">Site</div>
+            <a href="/" class="nav-a">
                 <span class="material-symbols-outlined">open_in_new</span>
                 Voir le site
             </a>
         </nav>
-
-        <div class="sidebar-user">
-            <div class="user-card">
-                <div class="user-avatar">AD</div>
-                <div class="user-info">
-                    <strong>Admin UDTL</strong>
-                    <span>Connecté</span>
+        <div class="sidebar-footer">
+            <div class="user-row">
+                <div class="user-av">AD</div>
+                <div>
+                    <div class="user-name">Admin UDTL</div>
+                    <div class="user-role">Administrateur</div>
                 </div>
             </div>
-            <button class="btn-logout" onclick="window.location.href='/'">
-                <span class="material-symbols-outlined" style="font-size:16px!important">logout</span>
+            <button class="btn-quit" onclick="window.location.href='/'">
+                <span class="material-symbols-outlined" style="font-size:15px!important">logout</span>
                 Quitter le dashboard
             </button>
         </div>
     </aside>
 
-    <!-- MAIN CONTENT -->
+    <!-- MAIN -->
     <main class="main">
 
-        <!-- Header -->
-        <div class="page-header">
-            <div>
-                <div class="badge-dept">31 · Haute-Garonne</div>
+        <!-- TOPBAR -->
+        <div class="topbar">
+            <div class="topbar-left">
+                <div class="dept-badge">
+                    <span class="material-symbols-outlined" style="font-size:11px!important;font-variation-settings:'FILL' 1;">location_on</span>
+                    31 · Haute-Garonne
+                </div>
                 <h1>Tableau de Bord<br><span>Administration.</span></h1>
-                <p>Gestion des adhésions et du contenu du site de l'Union Départementale des Transports et de la Logistique.</p>
             </div>
-            <button class="btn-primary" onclick="window.location.reload()">
-                ↻ &nbsp; Actualiser
-            </button>
-        </div>
-
-        <!-- KPI Row -->
-        <div class="kpi-grid">
-            <div class="kpi-card red">
-                <div class="kpi-label">Nouvelles adhésions</div>
-                <div class="kpi-value" id="adhesion-count">--</div>
-                <a href="https://app.netlify.com/sites/usdtl31/forms" target="_blank" class="kpi-sub muted" style="text-decoration:none;">
-                    <span class="material-symbols-outlined" style="font-size:14px!important">open_in_new</span>
-                    Voir dans Netlify Forms
+            <div class="topbar-actions">
+                <a href="/admin/#/collections/adhesions" class="btn btn-outline">
+                    <span class="material-symbols-outlined" style="font-size:14px!important">group</span>
+                    Gérer le CMS
                 </a>
-                <span class="material-symbols-outlined kpi-icon" style="font-variation-settings:'FILL' 1;">person_add</span>
-            </div>
-            <div class="kpi-card blue">
-                <div class="kpi-label">Statut du Système</div>
-                <div class="kpi-value">OK</div>
-                <div class="kpi-sub blue">
-                    <span class="material-symbols-outlined" style="font-size:14px!important">check_circle</span>
-                    Opérationnel
-                </div>
-                <span class="material-symbols-outlined kpi-icon" style="font-variation-settings:'FILL' 1;">cloud_done</span>
-            </div>
-            <div class="kpi-card green">
-                <div class="kpi-label">Disponibilité Serveur</div>
-                <div class="kpi-value">100%</div>
-                <div class="kpi-sub green">
-                    <span class="material-symbols-outlined" style="font-size:14px!important">trending_up</span>
-                    En ligne
-                </div>
-                <span class="material-symbols-outlined kpi-icon" style="font-variation-settings:'FILL' 1;">bolt</span>
+                <button class="btn btn-primary" onclick="loadAll()">
+                    <span class="material-symbols-outlined" style="font-size:14px!important">refresh</span>
+                    Actualiser
+                </button>
             </div>
         </div>
 
-        <!-- Action Cards -->
-        <div class="action-grid" style="grid-template-columns: repeat(3, 1fr);">
-            <!-- Suivi Soumissions Netlify -->
-            <div class="action-card" style="border-top: 3px solid var(--primary);">
-                <div>
-                    <div class="icon-wrap"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">inbox</span></div>
-                    <h3>Soumissions Netlify</h3>
-                    <p>Toutes les demandes d'adhésion reçues sont stockées ici en temps réel, même sans déploiement. <strong>C'est votre source de vérité principale.</strong></p>
+        <!-- KPI ROW -->
+        <div class="kpi-row">
+            <div class="kpi k-red">
+                <div class="kpi-label">Total Adhérents</div>
+                <div class="kpi-val" id="kpi-total">—</div>
+                <div class="kpi-sub up" id="kpi-sub-total">
+                    <span class="material-symbols-outlined" style="font-size:13px!important">person_add</span>
+                    Chargement...
                 </div>
-                <a href="https://app.netlify.com/sites/usdtl31/forms" target="_blank" class="action-btn" style="background:#e65c00;">
-                    <span class="material-symbols-outlined" style="font-size:16px!important">open_in_new</span>
-                    Voir les demandes reçues
-                </a>
+                <span class="material-symbols-outlined kpi-icon" style="font-variation-settings:'FILL' 1;">group</span>
             </div>
-
-            <!-- Adhérents CMS -->
-            <div class="action-card">
-                <div>
-                    <div class="icon-wrap"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">group</span></div>
-                    <h3>Adhérents (CMS)</h3>
-                    <p>Liste des adhésions converties en fiches CMS par la fonction automatique. Disponible après traitement du formulaire par Netlify.</p>
+            <div class="kpi k-green">
+                <div class="kpi-label">Ce mois-ci</div>
+                <div class="kpi-val" id="kpi-month">—</div>
+                <div class="kpi-sub up" id="kpi-sub-month">
+                    <span class="material-symbols-outlined" style="font-size:13px!important">calendar_month</span>
+                    Chargement...
                 </div>
-                <a href="/admin/#/collections/adhesions" class="action-btn">
-                    <span class="material-symbols-outlined" style="font-size:16px!important">open_in_new</span>
-                    Ouvrir la liste
-                </a>
+                <span class="material-symbols-outlined kpi-icon" style="font-variation-settings:'FILL' 1;">calendar_month</span>
             </div>
-
-            <!-- CMS -->
-            <div class="action-card dark">
-                <div>
-                    <div class="icon-wrap"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">edit_document</span></div>
-                    <h3>Édition du Contenu</h3>
-                    <p>Modifiez les textes, actualités et documents officiels du site de l'UDTL 31 via l'interface d'administration.</p>
+            <div class="kpi k-blue">
+                <div class="kpi-label">CDI / CDDs</div>
+                <div class="kpi-val" id="kpi-cdi">—</div>
+                <div class="kpi-sub" id="kpi-sub-cdi" style="color:var(--blue)">
+                    <span class="material-symbols-outlined" style="font-size:13px!important">work</span>
+                    Chargement...
                 </div>
-                <a href="/admin/" class="action-btn">
-                    <span class="material-symbols-outlined" style="font-size:16px!important">arrow_forward</span>
-                    Accéder au CMS
-                </a>
-                <span class="material-symbols-outlined deco" style="font-variation-settings:'FILL' 1;">edit_document</span>
+                <span class="material-symbols-outlined kpi-icon" style="font-variation-settings:'FILL' 1;">work</span>
+            </div>
+            <div class="kpi k-orange">
+                <div class="kpi-label">Cotisation totale</div>
+                <div class="kpi-val" id="kpi-cotisation">—</div>
+                <div class="kpi-sub" id="kpi-sub-cot" style="color:#d9630f">
+                    <span class="material-symbols-outlined" style="font-size:13px!important">euro</span>
+                    Chargement...
+                </div>
+                <span class="material-symbols-outlined kpi-icon" style="font-variation-settings:'FILL' 1;">payments</span>
             </div>
         </div>
 
-        <!-- Chart -->
-        <div class="chart-card">
-            <div class="chart-header">
-                <h3>Activité Hebdomadaire</h3>
-                <div class="chart-legend">
-                    <div class="legend-item">
-                        <div class="legend-dot" style="background:var(--primary)"></div>
-                        Visites
+        <!-- SECTION GRID : stats + quick access -->
+        <div class="section-grid">
+            <!-- Répartition par contrat -->
+            <div class="panel">
+                <div class="panel-head">
+                    <span class="panel-title">Répartition par contrat</span>
+                    <span class="material-symbols-outlined" style="color:var(--muted)">pie_chart</span>
+                </div>
+                <div class="panel-body" id="stats-contrat">
+                    <div class="loading"><div class="spinner"></div> Chargement...</div>
+                </div>
+            </div>
+
+            <!-- Accès rapides -->
+            <div class="panel">
+                <div class="panel-head">
+                    <span class="panel-title">Accès rapides</span>
+                    <span class="material-symbols-outlined" style="color:var(--muted)">grid_view</span>
+                </div>
+                <div class="panel-body">
+                    <div class="quick-grid">
+                        <a href="/admin/#/collections/adhesions" class="quick-card">
+                            <div class="quick-icon qi-red">
+                                <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">group</span>
+                            </div>
+                            <div class="quick-text">
+                                <strong>Adhérents CMS</strong>
+                                <span>Fiches détaillées</span>
+                            </div>
+                        </a>
+                        <a href="https://app.netlify.com/sites/usdtl31/forms" target="_blank" class="quick-card">
+                            <div class="quick-icon qi-orange">
+                                <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">inbox</span>
+                            </div>
+                            <div class="quick-text">
+                                <strong>Netlify Forms</strong>
+                                <span>Soumissions brutes</span>
+                            </div>
+                        </a>
+                        <a href="/admin/" class="quick-card">
+                            <div class="quick-icon qi-blue">
+                                <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">edit_note</span>
+                            </div>
+                            <div class="quick-text">
+                                <strong>Éditeur CMS</strong>
+                                <span>Articles & contenu</span>
+                            </div>
+                        </a>
+                        <a href="/adhesion" class="quick-card">
+                            <div class="quick-icon qi-green">
+                                <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">how_to_reg</span>
+                            </div>
+                            <div class="quick-text">
+                                <strong>Formulaire</strong>
+                                <span>Voir le formulaire d'adhésion</span>
+                            </div>
+                        </a>
                     </div>
-                    <div class="legend-item">
-                        <div class="legend-dot" style="background:#c8c6c5"></div>
-                        Connexions
-                    </div>
                 </div>
-            </div>
-            <div class="bar-chart">
-                <div class="bar-group">
-                    <div class="bar secondary" style="height:20%"></div>
-                    <div class="bar primary" style="height:40%"></div>
-                </div>
-                <div class="bar-group">
-                    <div class="bar secondary" style="height:25%"></div>
-                    <div class="bar primary" style="height:60%"></div>
-                </div>
-                <div class="bar-group">
-                    <div class="bar secondary" style="height:10%"></div>
-                    <div class="bar primary" style="height:90%"></div>
-                </div>
-                <div class="bar-group">
-                    <div class="bar secondary" style="height:20%"></div>
-                    <div class="bar primary" style="height:35%"></div>
-                </div>
-                <div class="bar-group">
-                    <div class="bar secondary" style="height:0%"></div>
-                    <div class="bar primary" style="height:100%"></div>
-                </div>
-                <div class="bar-group">
-                    <div class="bar secondary" style="height:30%"></div>
-                    <div class="bar primary" style="height:65%"></div>
-                </div>
-                <div class="bar-group">
-                    <div class="bar secondary" style="height:20%"></div>
-                    <div class="bar primary" style="height:50%"></div>
-                </div>
-            </div>
-            <div class="bar-labels">
-                <span>LUN</span><span>MAR</span><span>MER</span>
-                <span>JEU</span><span>VEN</span><span>SAM</span><span>DIM</span>
             </div>
         </div>
 
-        <!-- Footer -->
-        <div class="dash-footer">
-            © 2025 UDTL 31 — Système d'administration sécurisé
+        <!-- MEMBERS TABLE -->
+        <div class="panel-full">
+            <div class="panel-head">
+                <span class="panel-title" id="table-title">Liste des adhérents</span>
+                <div style="display:flex;gap:8px;align-items:center;">
+                    <input type="text" id="search-input" placeholder="🔍  Rechercher..." oninput="filterTable()" style="
+                        border: 1px solid var(--border); border-radius: 5px;
+                        padding: 6px 12px; font-size: 12px; font-family: 'Work Sans', sans-serif;
+                        background: var(--bg); outline: none; width: 180px;
+                        transition: border-color .15s;
+                    " onfocus="this.style.borderColor='var(--red)'" onblur="this.style.borderColor='var(--border)'"/>
+                    <a href="/admin/#/collections/adhesions" class="btn btn-primary" style="padding:7px 12px;font-size:9.5px;">
+                        <span class="material-symbols-outlined" style="font-size:13px!important">open_in_new</span>
+                        Ouvrir CMS
+                    </a>
+                </div>
+            </div>
+            <div class="member-table-wrap" id="members-container">
+                <div class="loading"><div class="spinner"></div> Chargement des adhérents...</div>
+            </div>
         </div>
+
+        <!-- FOOTER -->
+        <div class="dash-footer">© 2025 UDTL 31 — Système d'administration sécurisé</div>
 
     </main>
 </div>
+
+<script>
+    let allMembers = [];
+
+    function getInitials(nom, prenom) {
+        return ((prenom?.[0] || '') + (nom?.[0] || '')).toUpperCase();
+    }
+
+    function formatDate(iso) {
+        if (!iso) return '—';
+        const d = new Date(iso);
+        return d.toLocaleDateString('fr-FR', { day: '2-digit', month: '2-digit', year: 'numeric' });
+    }
+
+    function getBadge(contrat) {
+        const map = {
+            'CDI': 'badge-cdi',
+            'CDD': 'badge-cdd',
+            'Interim': 'badge-interim',
+            'Apprenti': 'badge-apprenti',
+        };
+        return map[contrat] || 'badge-apprenti';
+    }
+
+    function getAvatarColor(nom) {
+        const colors = ['#b40011','#005a9b','#2d7a3a','#d9630f','#7b3fc4','#0e7490'];
+        let h = 0;
+        for (let i = 0; i < (nom||'').length; i++) h = (h + nom.charCodeAt(i)) % colors.length;
+        return colors[h];
+    }
+
+    function renderKPIs(members) {
+        const total = members.length;
+        const now = new Date();
+        const thisMonth = members.filter(m => {
+            const d = new Date(m.date);
+            return d.getMonth() === now.getMonth() && d.getFullYear() === now.getFullYear();
+        }).length;
+
+        const cdi = members.filter(m => m.contrat === 'CDI').length;
+        const cdd = members.filter(m => m.contrat === 'CDD').length;
+        const cotTotal = members.reduce((acc, m) => acc + (parseFloat(m.cotisation) || 0), 0);
+
+        document.getElementById('kpi-total').textContent = total;
+        document.getElementById('kpi-sub-total').innerHTML = `
+            <span class="material-symbols-outlined" style="font-size:13px!important">person_add</span>
+            ${total === 0 ? 'Pas encore d\'adhérents' : total + ' membres au total'}`;
+
+        document.getElementById('kpi-month').textContent = thisMonth;
+        document.getElementById('kpi-sub-month').innerHTML = `
+            <span class="material-symbols-outlined" style="font-size:13px!important">calendar_month</span>
+            ${thisMonth === 0 ? 'Aucun ce mois' : 'adhésion' + (thisMonth > 1 ? 's' : '') + ' ce mois'}`;
+
+        document.getElementById('kpi-cdi').textContent = cdi;
+        document.getElementById('kpi-sub-cdi').innerHTML = `
+            <span class="material-symbols-outlined" style="font-size:13px!important">work</span>
+            CDI · ${cdd} CDD`;
+
+        document.getElementById('kpi-cotisation').textContent = cotTotal.toLocaleString('fr-FR') + ' €';
+        document.getElementById('kpi-sub-cot').innerHTML = `
+            <span class="material-symbols-outlined" style="font-size:13px!important">euro</span>
+            cotisation annuelle cumulée`;
+    }
+
+    function renderStats(members) {
+        const contrats = {};
+        members.forEach(m => { contrats[m.contrat || 'Non renseigné'] = (contrats[m.contrat || 'Non renseigné'] || 0) + 1; });
+        const total = members.length || 1;
+        const sorted = Object.entries(contrats).sort((a,b) => b[1]-a[1]);
+        const colors = { 'CDI': '#2d7a3a', 'CDD': '#005a9b', 'Interim': '#d9630f', 'Apprenti': '#6b4a46', 'Non renseigné': '#c8c6c5' };
+
+        const html = sorted.length === 0
+            ? '<div class="empty"><span class="material-symbols-outlined">analytics</span><p>Aucune donnée</p></div>'
+            : sorted.map(([label, count]) => `
+                <div class="stat-item">
+                    <div class="stat-header">
+                        <span class="stat-label">${label}</span>
+                        <span class="stat-count">${count} (${Math.round(count/total*100)}%)</span>
+                    </div>
+                    <div class="stat-bar">
+                        <div class="stat-bar-fill" style="width:${Math.round(count/total*100)}%;background:${colors[label]||'#b40011'}"></div>
+                    </div>
+                </div>`).join('');
+
+        document.getElementById('stats-contrat').innerHTML = html;
+    }
+
+    function renderTable(members) {
+        document.getElementById('table-title').textContent = `Liste des adhérents (${members.length})`;
+
+        if (members.length === 0) {
+            document.getElementById('members-container').innerHTML = `
+                <div class="empty">
+                    <span class="material-symbols-outlined">group_off</span>
+                    <p>Aucun adhérent pour le moment.<br>Les nouvelles inscriptions apparaîtront ici automatiquement.</p>
+                </div>`;
+            return;
+        }
+
+        const rows = members.map(m => `
+            <tr>
+                <td>
+                    <div class="member-cell">
+                        <div class="avatar" style="background:${getAvatarColor(m.nom)}">${getInitials(m.nom, m.prenom)}</div>
+                        <div>
+                            <div class="td-name">${m.prenom || ''} ${m.nom || ''}</div>
+                            <div class="td-muted">${m.email || '—'}</div>
+                        </div>
+                    </div>
+                </td>
+                <td>${m.entreprise || '<span class="td-muted">—</span>'}</td>
+                <td>${m.fonction || '<span class="td-muted">—</span>'}</td>
+                <td><span class="badge ${getBadge(m.contrat)}">${m.contrat || '—'}</span></td>
+                <td style="font-feature-settings:'tnum'">${m.cotisation ? m.cotisation + ' €' : '—'}</td>
+                <td class="td-muted">${formatDate(m.date)}</td>
+            </tr>`).join('');
+
+        document.getElementById('members-container').innerHTML = `
+            <table>
+                <thead>
+                    <tr>
+                        <th>Adhérent</th>
+                        <th>Entreprise</th>
+                        <th>Fonction</th>
+                        <th>Contrat</th>
+                        <th>Cotisation</th>
+                        <th>Date d'adhésion</th>
+                    </tr>
+                </thead>
+                <tbody>${rows}</tbody>
+            </table>`;
+    }
+
+    function filterTable() {
+        const q = document.getElementById('search-input').value.toLowerCase();
+        const filtered = allMembers.filter(m =>
+            (m.nom||'').toLowerCase().includes(q) ||
+            (m.prenom||'').toLowerCase().includes(q) ||
+            (m.email||'').toLowerCase().includes(q) ||
+            (m.entreprise||'').toLowerCase().includes(q) ||
+            (m.fonction||'').toLowerCase().includes(q)
+        );
+        renderTable(filtered);
+        document.getElementById('table-title').textContent = `Liste des adhérents (${filtered.length}${q ? ' résultat' + (filtered.length > 1 ? 's' : '') : ''})`;
+    }
+
+    async function loadAll() {
+        // Reset
+        document.getElementById('members-container').innerHTML = '<div class="loading"><div class="spinner"></div> Chargement...</div>';
+        document.getElementById('stats-contrat').innerHTML = '<div class="loading"><div class="spinner"></div></div>';
+
+        try {
+            const res = await fetch('/.netlify/functions/get-adhesions');
+            const data = await res.json();
+
+            if (!res.ok) throw new Error(data.error || 'Erreur réseau');
+
+            allMembers = data.adhesions || [];
+            renderKPIs(allMembers);
+            renderStats(allMembers);
+            renderTable(allMembers);
+        } catch (err) {
+            console.error('Erreur dashboard:', err);
+            document.getElementById('members-container').innerHTML = `
+                <div class="empty">
+                    <span class="material-symbols-outlined">error</span>
+                    <p>Impossible de charger les données.<br><small>${err.message}</small></p>
+                </div>`;
+            ['kpi-total','kpi-month','kpi-cdi','kpi-cotisation'].forEach(id => {
+                document.getElementById(id).textContent = '!';
+            });
+        }
+    }
+
+    // Chargement automatique au démarrage
+    document.addEventListener('DOMContentLoaded', loadAll);
+</script>
 </body>
 </html>
